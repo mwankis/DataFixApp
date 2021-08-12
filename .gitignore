@@ -3,3 +3,17 @@
 ################################################################################
 
 /.vs
+/LeadingAllianceSal/.vs/LeadingAllianceSal/v15/Server/sqlite3
+/LeadingAllianceSal/BusinessLogic/bin
+/LeadingAllianceSal/BusinessLogic/obj/Debug
+/LeadingAllianceSal/DuplicateInvoices_Task2/obj/Debug
+/LeadingAllianceSal/DuplicateUpgrades_Task1/obj/Debug
+/LeadingAllianceSal/MissingInvoices_Task4/obj/Debug
+/LeadingAllianceSal/MissingOpeningInvoices_Task3/obj/Debug
+/LeadingAllianceSal/packages/Microsoft.CrmSdk.CoreTools.8.2.0.5
+/LeadingAllianceSal/Task1_DuplicateUpgrades/bin/Debug
+/LeadingAllianceSal/Task1_DuplicateUpgrades/obj/Debug
+/LeadingAllianceSal/Task2_DuplicateInvoices/obj/Debug
+/LeadingAllianceSal/Task3_MissingOpeningInvoices/obj/Debug
+/LeadingAllianceSal/Task5_ZeroAwardedPoints/bin/Debug
+/LeadingAllianceSal/Task5_ZeroAwardedPoints/obj/Debug
