@@ -30,10 +30,9 @@ namespace BusinessLogic
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while connecting to CRM " + ex.Message);
                 var organizationService = new DynamicsConnectionResult
                 {
-                    ErrorMessage = ex.Message
+                    ErrorMessage = "Failed to connect to CRM. Error message "+ ex.Message
                 };
 
                 return organizationService;

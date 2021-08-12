@@ -33,17 +33,21 @@
             this.connectionStatus = new System.Windows.Forms.Label();
             this.testConnectionBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.soapUrl = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.showPassword = new System.Windows.Forms.Button();
-            this.organisationName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.crmServer = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.userName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.fetchDataTab = new System.Windows.Forms.TabPage();
-            this.recordsList = new System.Windows.Forms.ListBox();
+            this.dataRecordsGridView = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CardId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NewDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recordCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,12 +58,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.soapUrl = new System.Windows.Forms.TextBox();
             this.applicationTabs.SuspendLayout();
             this.connectionTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.fetchDataTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRecordsGridView)).BeginInit();
             this.errorTab.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -74,7 +77,7 @@
             this.applicationTabs.Controls.Add(this.fetchDataTab);
             this.applicationTabs.Controls.Add(this.errorTab);
             this.applicationTabs.Location = new System.Drawing.Point(4, 15);
-            this.applicationTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.applicationTabs.Margin = new System.Windows.Forms.Padding(4);
             this.applicationTabs.Name = "applicationTabs";
             this.applicationTabs.SelectedIndex = 0;
             this.applicationTabs.Size = new System.Drawing.Size(1207, 535);
@@ -86,9 +89,9 @@
             this.connectionTab.Controls.Add(this.testConnectionBtn);
             this.connectionTab.Controls.Add(this.groupBox1);
             this.connectionTab.Location = new System.Drawing.Point(4, 25);
-            this.connectionTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.connectionTab.Margin = new System.Windows.Forms.Padding(4);
             this.connectionTab.Name = "connectionTab";
-            this.connectionTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.connectionTab.Padding = new System.Windows.Forms.Padding(4);
             this.connectionTab.Size = new System.Drawing.Size(1199, 506);
             this.connectionTab.TabIndex = 3;
             this.connectionTab.Text = "Connect To CRM";
@@ -98,7 +101,7 @@
             // 
             this.connectionStatus.AutoSize = true;
             this.connectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connectionStatus.Location = new System.Drawing.Point(44, 315);
+            this.connectionStatus.Location = new System.Drawing.Point(40, 353);
             this.connectionStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.connectionStatus.Name = "connectionStatus";
             this.connectionStatus.Size = new System.Drawing.Size(130, 20);
@@ -108,7 +111,7 @@
             // testConnectionBtn
             // 
             this.testConnectionBtn.Location = new System.Drawing.Point(793, 304);
-            this.testConnectionBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.testConnectionBtn.Margin = new System.Windows.Forms.Padding(4);
             this.testConnectionBtn.Name = "testConnectionBtn";
             this.testConnectionBtn.Size = new System.Drawing.Size(156, 28);
             this.testConnectionBtn.TabIndex = 9;
@@ -121,27 +124,39 @@
             this.groupBox1.Controls.Add(this.soapUrl);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.showPassword);
-            this.groupBox1.Controls.Add(this.organisationName);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.crmServer);
             this.groupBox1.Controls.Add(this.password);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.userName);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(44, 42);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(905, 241);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection Details";
             // 
+            // soapUrl
+            // 
+            this.soapUrl.Location = new System.Drawing.Point(134, 50);
+            this.soapUrl.Name = "soapUrl";
+            this.soapUrl.Size = new System.Drawing.Size(755, 22);
+            this.soapUrl.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 17);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Crm SoapUrl";
+            // 
             // showPassword
             // 
             this.showPassword.Location = new System.Drawing.Point(749, 162);
-            this.showPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.showPassword.Margin = new System.Windows.Forms.Padding(4);
             this.showPassword.Name = "showPassword";
             this.showPassword.Size = new System.Drawing.Size(141, 28);
             this.showPassword.TabIndex = 18;
@@ -149,46 +164,10 @@
             this.showPassword.UseVisualStyleBackColor = true;
             this.showPassword.Click += new System.EventHandler(this.showPassword_Click);
             // 
-            // organisationName
-            // 
-            this.organisationName.Location = new System.Drawing.Point(621, 38);
-            this.organisationName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.organisationName.Name = "organisationName";
-            this.organisationName.Size = new System.Drawing.Size(268, 22);
-            this.organisationName.TabIndex = 17;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(483, 38);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 17);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "OrganisationName";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Crm Server";
-            // 
-            // crmServer
-            // 
-            this.crmServer.Location = new System.Drawing.Point(135, 31);
-            this.crmServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.crmServer.Name = "crmServer";
-            this.crmServer.Size = new System.Drawing.Size(307, 22);
-            this.crmServer.TabIndex = 13;
-            // 
             // password
             // 
             this.password.Location = new System.Drawing.Point(621, 130);
-            this.password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.password.Margin = new System.Windows.Forms.Padding(4);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(268, 22);
@@ -207,7 +186,7 @@
             // userName
             // 
             this.userName.Location = new System.Drawing.Point(135, 126);
-            this.userName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.userName.Margin = new System.Windows.Forms.Padding(4);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(307, 22);
             this.userName.TabIndex = 14;
@@ -224,7 +203,7 @@
             // 
             // fetchDataTab
             // 
-            this.fetchDataTab.Controls.Add(this.recordsList);
+            this.fetchDataTab.Controls.Add(this.dataRecordsGridView);
             this.fetchDataTab.Controls.Add(this.recordCount);
             this.fetchDataTab.Controls.Add(this.label7);
             this.fetchDataTab.Controls.Add(this.label1);
@@ -233,26 +212,69 @@
             this.fetchDataTab.Controls.Add(this.fetchBtn);
             this.fetchDataTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fetchDataTab.Location = new System.Drawing.Point(4, 25);
-            this.fetchDataTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fetchDataTab.Margin = new System.Windows.Forms.Padding(4);
             this.fetchDataTab.Name = "fetchDataTab";
-            this.fetchDataTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fetchDataTab.Padding = new System.Windows.Forms.Padding(4);
             this.fetchDataTab.Size = new System.Drawing.Size(1199, 506);
             this.fetchDataTab.TabIndex = 0;
             this.fetchDataTab.Text = "Fetch Data && Apply Changes";
             this.fetchDataTab.UseVisualStyleBackColor = true;
             // 
-            // recordsList
+            // dataRecordsGridView
             // 
-            this.recordsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataRecordsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordsList.FormattingEnabled = true;
-            this.recordsList.ItemHeight = 20;
-            this.recordsList.Location = new System.Drawing.Point(13, 69);
-            this.recordsList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.recordsList.Name = "recordsList";
-            this.recordsList.Size = new System.Drawing.Size(1173, 404);
-            this.recordsList.TabIndex = 10;
+            this.dataRecordsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataRecordsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataRecordsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.CustomerId,
+            this.CardId,
+            this.NewDate,
+            this.CreatedOn,
+            this.Colour});
+            this.dataRecordsGridView.Location = new System.Drawing.Point(7, 53);
+            this.dataRecordsGridView.Name = "dataRecordsGridView";
+            this.dataRecordsGridView.RowTemplate.Height = 24;
+            this.dataRecordsGridView.Size = new System.Drawing.Size(1181, 446);
+            this.dataRecordsGridView.TabIndex = 10;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            // 
+            // CardId
+            // 
+            this.CardId.HeaderText = "CardId";
+            this.CardId.Name = "CardId";
+            this.CardId.ReadOnly = true;
+            // 
+            // NewDate
+            // 
+            this.NewDate.HeaderText = "New Date";
+            this.NewDate.Name = "NewDate";
+            this.NewDate.ReadOnly = true;
+            // 
+            // CreatedOn
+            // 
+            this.CreatedOn.HeaderText = "CreatedOn";
+            this.CreatedOn.Name = "CreatedOn";
+            this.CreatedOn.ReadOnly = true;
+            // 
+            // Colour
+            // 
+            this.Colour.HeaderText = "Colour";
+            this.Colour.Name = "Colour";
+            this.Colour.ReadOnly = true;
+            this.Colour.Visible = false;
             // 
             // recordCount
             // 
@@ -287,7 +309,7 @@
             // dateTimeFrom
             // 
             this.dateTimeFrom.Location = new System.Drawing.Point(216, 17);
-            this.dateTimeFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(277, 26);
             this.dateTimeFrom.TabIndex = 4;
@@ -296,7 +318,7 @@
             // 
             this.applyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applyChanges.Location = new System.Drawing.Point(1040, 7);
-            this.applyChanges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.applyChanges.Margin = new System.Windows.Forms.Padding(4);
             this.applyChanges.Name = "applyChanges";
             this.applyChanges.Size = new System.Drawing.Size(148, 39);
             this.applyChanges.TabIndex = 2;
@@ -307,7 +329,7 @@
             // 
             this.fetchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fetchBtn.Location = new System.Drawing.Point(872, 7);
-            this.fetchBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fetchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.fetchBtn.Name = "fetchBtn";
             this.fetchBtn.Size = new System.Drawing.Size(143, 37);
             this.fetchBtn.TabIndex = 0;
@@ -320,7 +342,7 @@
             this.errorTab.Controls.Add(this.panel2);
             this.errorTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorTab.Location = new System.Drawing.Point(4, 25);
-            this.errorTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.errorTab.Margin = new System.Windows.Forms.Padding(4);
             this.errorTab.Name = "errorTab";
             this.errorTab.Size = new System.Drawing.Size(1199, 506);
             this.errorTab.TabIndex = 2;
@@ -332,7 +354,7 @@
             this.panel2.Controls.Add(this.errorList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1199, 506);
             this.panel2.TabIndex = 1;
@@ -345,7 +367,7 @@
             this.errorList.FormattingEnabled = true;
             this.errorList.ItemHeight = 25;
             this.errorList.Location = new System.Drawing.Point(7, 16);
-            this.errorList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.errorList.Margin = new System.Windows.Forms.Padding(4);
             this.errorList.Name = "errorList";
             this.errorList.Size = new System.Drawing.Size(1187, 454);
             this.errorList.TabIndex = 0;
@@ -355,26 +377,10 @@
             this.panel1.Controls.Add(this.applicationTabs);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1215, 554);
             this.panel1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 17);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Crm SoapUrl";
-            // 
-            // soapUrl
-            // 
-            this.soapUrl.Location = new System.Drawing.Point(135, 78);
-            this.soapUrl.Name = "soapUrl";
-            this.soapUrl.Size = new System.Drawing.Size(755, 22);
-            this.soapUrl.TabIndex = 20;
             // 
             // Form1
             // 
@@ -382,8 +388,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 554);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Text = "Task1_DuplicateUpgrades";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.applicationTabs.ResumeLayout(false);
@@ -393,6 +398,7 @@
             this.groupBox1.PerformLayout();
             this.fetchDataTab.ResumeLayout(false);
             this.fetchDataTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRecordsGridView)).EndInit();
             this.errorTab.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -413,23 +419,25 @@
         private System.Windows.Forms.TabPage connectionTab;
         private System.Windows.Forms.Button testConnectionBtn;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox crmServer;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox userName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox organisationName;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label connectionStatus;
         private System.Windows.Forms.Button showPassword;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox errorList;
         private System.Windows.Forms.Label recordCount;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox recordsList;
         private System.Windows.Forms.TextBox soapUrl;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataRecordsGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CardId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NewDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedOn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Colour;
     }
 }
 

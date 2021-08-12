@@ -10,109 +10,125 @@ namespace BusinessLogic
 {
     public static class DynamicsService
     {
-        public static string TestConnection(IOrganizationService orgService)
+        
+        public static OperationResult GetEntityCollection(IOrganizationService orgService, QueryExpression query)
         {
-            if (orgService != null)
-            {
-                Guid userid = ((WhoAmIResponse)orgService.Execute(new WhoAmIRequest())).UserId;
-                var user = orgService.Retrieve("systemuser", userid, new ColumnSet(true));
-                if (user.KeyAttributes.Contains("fullname"))
-                {
-                    return user["fullname"].ToString();
-                }
-            }
-          
-            return string.Empty;
-        }
-
-        public static List<Entity> GetEntityCollection(IOrganizationService orgService, QueryExpression query)
-        {
+            var response = new OperationResult();
             try
             {
                 var entityCollection = orgService.RetrieveMultiple(query);
-                return entityCollection.Entities.ToList();
+                response.EntityList = entityCollection.Entities.ToList();
+                return response;
             }
             catch (FaultException<OrganizationServiceFault> ex)
             {
-                ////_log.Info("******27");
-                throw;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
             
         }        
 
-        public static List<Entity> RetrieveAllRecords(IOrganizationService service, QueryExpression query)
+        public static OperationResult RetrieveAllRecords(IOrganizationService service, QueryExpression query)
         {
-            var pageNumber = 1;
-            var pagingCookie = string.Empty;
-            var result = new List<Entity>();
-            EntityCollection resp;
-            do
+            var response = new OperationResult();
+            try
             {
-                if (pageNumber != 1)
+                var pageNumber = 1;
+                var pagingCookie = string.Empty;
+                var result = new List<Entity>();
+                EntityCollection resp;
+                do
                 {
-                    query.PageInfo.PageNumber = pageNumber;
-                    query.PageInfo.PagingCookie = pagingCookie;
+                    if (pageNumber != 1)
+                    {
+                        query.PageInfo.PageNumber = pageNumber;
+                        query.PageInfo.PagingCookie = pagingCookie;
+                    }
+                    resp = service.RetrieveMultiple(query);
+                    if (resp.MoreRecords)
+                    {
+                        pageNumber++;
+                        pagingCookie = resp.PagingCookie;
+                    }
+                    result.AddRange(resp.Entities);
                 }
-                resp = service.RetrieveMultiple(query);
-                if (resp.MoreRecords)
-                {
-                    pageNumber++;
-                    pagingCookie = resp.PagingCookie;
-                }
-                //Add the result from RetrieveMultiple to the List to be returned.
-                result.AddRange(resp.Entities);
-            }
-            while (resp.MoreRecords);
+                while (resp.MoreRecords);
 
-            return result;
+                response.EntityList = result;
+                return response;
+            }
+            catch (FaultException<OrganizationServiceFault> ex)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
+            }
+
         }
 
-        public static Entity GetEntity(IOrganizationService orgService, string entityName, Guid id, string [] columns )
+        public static OperationResult GetEntity(IOrganizationService orgService, string entityName, Guid id, string [] columns )
         {
+            var response = new OperationResult();
             try
             {
                 var entity = orgService.Retrieve(entityName, id, new ColumnSet(columns));
-                return entity;
+                response.Entity = entity;
+                return response;
             }
 
             catch (FaultException<OrganizationServiceFault> ex)
             {
-                ////_log.Info("******27");
-                throw;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
             catch (Exception ex)
             {
-
-                throw;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
            
         }
 
-        public static bool GetEntity(IOrganizationService orgService, Entity entity)
+        public static OperationResult UpdateEntity(IOrganizationService orgService, Entity entity)
         {
+            var response = new OperationResult();
             try
             {
                 orgService.Update(entity);
-                return true;
+                return response;
             }
             catch (FaultException<OrganizationServiceFault> ex)
             {
-                ////_log.Info("******27");
-                throw;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
             catch (Exception ex)
             {
-                return true;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }            
         }
 
-        public static bool DeactivateEntity(IOrganizationService orgService, Entity entity, int state, int status)
+        public static OperationResult DeactivateEntity(IOrganizationService orgService, Entity entity, int state, int status)
         {
+            var response = new OperationResult();
             try
             {
                 var req = new SetStateRequest
@@ -123,16 +139,19 @@ namespace BusinessLogic
                  };
                
                 orgService.Update(entity);
-                return true;
+                return response;
             }
             catch (FaultException<OrganizationServiceFault> ex)
             {
-                ////_log.Info("******27");
-                throw;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
             catch (Exception ex)
             {
-                return true;
+                response.Succeded = false;
+                response.ErrorMessage = "Something went wrong. " + ex.Message;
+                return response;
             }
         }
     }

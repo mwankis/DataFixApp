@@ -59,10 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeSamples.cs" />
     <Compile Include="ConnectToCRM.cs" />
     <Compile Include="DynamicsConnectionResult.cs" />
     <Compile Include="DynamicsService.cs" />
-    <Compile Include="OrganisationService.cs" />
+    <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
