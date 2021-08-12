@@ -43,6 +43,7 @@
             this.userName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.fetchDataTab = new System.Windows.Forms.TabPage();
+            this.recordsList = new System.Windows.Forms.ListBox();
             this.recordCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +54,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.recordsList = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.soapUrl = new System.Windows.Forms.TextBox();
             this.applicationTabs.SuspendLayout();
             this.connectionTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,10 +73,11 @@
             this.applicationTabs.Controls.Add(this.connectionTab);
             this.applicationTabs.Controls.Add(this.fetchDataTab);
             this.applicationTabs.Controls.Add(this.errorTab);
-            this.applicationTabs.Location = new System.Drawing.Point(3, 12);
+            this.applicationTabs.Location = new System.Drawing.Point(4, 15);
+            this.applicationTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.applicationTabs.Name = "applicationTabs";
             this.applicationTabs.SelectedIndex = 0;
-            this.applicationTabs.Size = new System.Drawing.Size(905, 435);
+            this.applicationTabs.Size = new System.Drawing.Size(1207, 535);
             this.applicationTabs.TabIndex = 3;
             // 
             // connectionTab
@@ -82,10 +85,11 @@
             this.connectionTab.Controls.Add(this.connectionStatus);
             this.connectionTab.Controls.Add(this.testConnectionBtn);
             this.connectionTab.Controls.Add(this.groupBox1);
-            this.connectionTab.Location = new System.Drawing.Point(4, 22);
+            this.connectionTab.Location = new System.Drawing.Point(4, 25);
+            this.connectionTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.connectionTab.Name = "connectionTab";
-            this.connectionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.connectionTab.Size = new System.Drawing.Size(897, 409);
+            this.connectionTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.connectionTab.Size = new System.Drawing.Size(1199, 506);
             this.connectionTab.TabIndex = 3;
             this.connectionTab.Text = "Connect To CRM";
             this.connectionTab.UseVisualStyleBackColor = true;
@@ -94,17 +98,19 @@
             // 
             this.connectionStatus.AutoSize = true;
             this.connectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connectionStatus.Location = new System.Drawing.Point(33, 256);
+            this.connectionStatus.Location = new System.Drawing.Point(44, 315);
+            this.connectionStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.connectionStatus.Name = "connectionStatus";
-            this.connectionStatus.Size = new System.Drawing.Size(108, 16);
+            this.connectionStatus.Size = new System.Drawing.Size(130, 20);
             this.connectionStatus.TabIndex = 17;
             this.connectionStatus.Text = "Not connected";
             // 
             // testConnectionBtn
             // 
-            this.testConnectionBtn.Location = new System.Drawing.Point(595, 247);
+            this.testConnectionBtn.Location = new System.Drawing.Point(793, 304);
+            this.testConnectionBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.testConnectionBtn.Name = "testConnectionBtn";
-            this.testConnectionBtn.Size = new System.Drawing.Size(117, 23);
+            this.testConnectionBtn.Size = new System.Drawing.Size(156, 28);
             this.testConnectionBtn.TabIndex = 9;
             this.testConnectionBtn.Text = "Test Connection";
             this.testConnectionBtn.UseVisualStyleBackColor = true;
@@ -112,6 +118,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.soapUrl);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.showPassword);
             this.groupBox1.Controls.Add(this.organisationName);
             this.groupBox1.Controls.Add(this.label6);
@@ -121,18 +129,21 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.userName);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(33, 34);
+            this.groupBox1.Location = new System.Drawing.Point(44, 42);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(679, 196);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(905, 241);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection Details";
             // 
             // showPassword
             // 
-            this.showPassword.Location = new System.Drawing.Point(562, 132);
+            this.showPassword.Location = new System.Drawing.Point(749, 162);
+            this.showPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.showPassword.Name = "showPassword";
-            this.showPassword.Size = new System.Drawing.Size(106, 23);
+            this.showPassword.Size = new System.Drawing.Size(141, 28);
             this.showPassword.TabIndex = 18;
             this.showPassword.Text = "Show Password";
             this.showPassword.UseVisualStyleBackColor = true;
@@ -140,66 +151,74 @@
             // 
             // organisationName
             // 
-            this.organisationName.Location = new System.Drawing.Point(466, 31);
+            this.organisationName.Location = new System.Drawing.Point(621, 38);
+            this.organisationName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.organisationName.Name = "organisationName";
-            this.organisationName.Size = new System.Drawing.Size(202, 20);
+            this.organisationName.Size = new System.Drawing.Size(268, 22);
             this.organisationName.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(362, 31);
+            this.label6.Location = new System.Drawing.Point(483, 38);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 13);
+            this.label6.Size = new System.Drawing.Size(126, 17);
             this.label6.TabIndex = 16;
             this.label6.Text = "OrganisationName";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 25);
+            this.label3.Location = new System.Drawing.Point(15, 31);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.Size = new System.Drawing.Size(79, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Crm Server";
             // 
             // crmServer
             // 
-            this.crmServer.Location = new System.Drawing.Point(101, 25);
+            this.crmServer.Location = new System.Drawing.Point(135, 31);
+            this.crmServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.crmServer.Name = "crmServer";
-            this.crmServer.Size = new System.Drawing.Size(231, 20);
+            this.crmServer.Size = new System.Drawing.Size(307, 22);
             this.crmServer.TabIndex = 13;
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(466, 106);
+            this.password.Location = new System.Drawing.Point(621, 130);
+            this.password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(202, 20);
+            this.password.Size = new System.Drawing.Size(268, 22);
             this.password.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(359, 109);
+            this.label5.Location = new System.Drawing.Point(479, 134);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.Size = new System.Drawing.Size(69, 17);
             this.label5.TabIndex = 12;
             this.label5.Text = "Password";
             // 
             // userName
             // 
-            this.userName.Location = new System.Drawing.Point(101, 102);
+            this.userName.Location = new System.Drawing.Point(135, 126);
+            this.userName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(231, 20);
+            this.userName.Size = new System.Drawing.Size(307, 22);
             this.userName.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 109);
+            this.label4.Location = new System.Drawing.Point(15, 134);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Username";
             // 
@@ -213,54 +232,73 @@
             this.fetchDataTab.Controls.Add(this.applyChanges);
             this.fetchDataTab.Controls.Add(this.fetchBtn);
             this.fetchDataTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchDataTab.Location = new System.Drawing.Point(4, 22);
+            this.fetchDataTab.Location = new System.Drawing.Point(4, 25);
+            this.fetchDataTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fetchDataTab.Name = "fetchDataTab";
-            this.fetchDataTab.Padding = new System.Windows.Forms.Padding(3);
-            this.fetchDataTab.Size = new System.Drawing.Size(897, 409);
+            this.fetchDataTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fetchDataTab.Size = new System.Drawing.Size(1199, 506);
             this.fetchDataTab.TabIndex = 0;
             this.fetchDataTab.Text = "Fetch Data && Apply Changes";
             this.fetchDataTab.UseVisualStyleBackColor = true;
             // 
+            // recordsList
+            // 
+            this.recordsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordsList.FormattingEnabled = true;
+            this.recordsList.ItemHeight = 20;
+            this.recordsList.Location = new System.Drawing.Point(13, 69);
+            this.recordsList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.recordsList.Name = "recordsList";
+            this.recordsList.Size = new System.Drawing.Size(1173, 404);
+            this.recordsList.TabIndex = 10;
+            // 
             // recordCount
             // 
             this.recordCount.AutoSize = true;
-            this.recordCount.Location = new System.Drawing.Point(59, 16);
+            this.recordCount.Location = new System.Drawing.Point(79, 20);
+            this.recordCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.recordCount.Name = "recordCount";
-            this.recordCount.Size = new System.Drawing.Size(15, 16);
+            this.recordCount.Size = new System.Drawing.Size(18, 20);
             this.recordCount.TabIndex = 9;
             this.recordCount.Text = "0";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 15);
+            this.label7.Location = new System.Drawing.Point(9, 18);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
+            this.label7.Size = new System.Drawing.Size(53, 20);
             this.label7.TabIndex = 8;
             this.label7.Text = "Count";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 14);
+            this.label1.Location = new System.Drawing.Point(156, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 16);
+            this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "From";
             // 
             // dateTimeFrom
             // 
-            this.dateTimeFrom.Location = new System.Drawing.Point(162, 14);
+            this.dateTimeFrom.Location = new System.Drawing.Point(216, 17);
+            this.dateTimeFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimeFrom.Name = "dateTimeFrom";
-            this.dateTimeFrom.Size = new System.Drawing.Size(209, 22);
+            this.dateTimeFrom.Size = new System.Drawing.Size(277, 26);
             this.dateTimeFrom.TabIndex = 4;
             // 
             // applyChanges
             // 
             this.applyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.applyChanges.Location = new System.Drawing.Point(780, 6);
+            this.applyChanges.Location = new System.Drawing.Point(1040, 7);
+            this.applyChanges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.applyChanges.Name = "applyChanges";
-            this.applyChanges.Size = new System.Drawing.Size(111, 32);
+            this.applyChanges.Size = new System.Drawing.Size(148, 39);
             this.applyChanges.TabIndex = 2;
             this.applyChanges.Text = "Apply Changes";
             this.applyChanges.UseVisualStyleBackColor = true;
@@ -268,9 +306,10 @@
             // fetchBtn
             // 
             this.fetchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchBtn.Location = new System.Drawing.Point(654, 6);
+            this.fetchBtn.Location = new System.Drawing.Point(872, 7);
+            this.fetchBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fetchBtn.Name = "fetchBtn";
-            this.fetchBtn.Size = new System.Drawing.Size(107, 30);
+            this.fetchBtn.Size = new System.Drawing.Size(143, 37);
             this.fetchBtn.TabIndex = 0;
             this.fetchBtn.Text = "Fetch Records";
             this.fetchBtn.UseVisualStyleBackColor = true;
@@ -280,9 +319,10 @@
             // 
             this.errorTab.Controls.Add(this.panel2);
             this.errorTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorTab.Location = new System.Drawing.Point(4, 22);
+            this.errorTab.Location = new System.Drawing.Point(4, 25);
+            this.errorTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.errorTab.Name = "errorTab";
-            this.errorTab.Size = new System.Drawing.Size(897, 409);
+            this.errorTab.Size = new System.Drawing.Size(1199, 506);
             this.errorTab.TabIndex = 2;
             this.errorTab.Text = "Error Messages";
             this.errorTab.UseVisualStyleBackColor = true;
@@ -292,8 +332,9 @@
             this.panel2.Controls.Add(this.errorList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(897, 409);
+            this.panel2.Size = new System.Drawing.Size(1199, 506);
             this.panel2.TabIndex = 1;
             // 
             // errorList
@@ -302,10 +343,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.errorList.FormattingEnabled = true;
-            this.errorList.ItemHeight = 20;
-            this.errorList.Location = new System.Drawing.Point(5, 13);
+            this.errorList.ItemHeight = 25;
+            this.errorList.Location = new System.Drawing.Point(7, 16);
+            this.errorList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.errorList.Name = "errorList";
-            this.errorList.Size = new System.Drawing.Size(889, 384);
+            this.errorList.Size = new System.Drawing.Size(1187, 454);
             this.errorList.TabIndex = 0;
             // 
             // panel1
@@ -313,28 +355,34 @@
             this.panel1.Controls.Add(this.applicationTabs);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(911, 450);
+            this.panel1.Size = new System.Drawing.Size(1215, 554);
             this.panel1.TabIndex = 4;
             // 
-            // recordsList
+            // label2
             // 
-            this.recordsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordsList.FormattingEnabled = true;
-            this.recordsList.ItemHeight = 16;
-            this.recordsList.Location = new System.Drawing.Point(10, 56);
-            this.recordsList.Name = "recordsList";
-            this.recordsList.Size = new System.Drawing.Size(881, 340);
-            this.recordsList.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 17);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Crm SoapUrl";
+            // 
+            // soapUrl
+            // 
+            this.soapUrl.Location = new System.Drawing.Point(135, 78);
+            this.soapUrl.Name = "soapUrl";
+            this.soapUrl.Size = new System.Drawing.Size(755, 22);
+            this.soapUrl.TabIndex = 20;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 450);
+            this.ClientSize = new System.Drawing.Size(1215, 554);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Task1_DuplicateUpgrades";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -380,6 +428,8 @@
         private System.Windows.Forms.Label recordCount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox recordsList;
+        private System.Windows.Forms.TextBox soapUrl;
+        private System.Windows.Forms.Label label2;
     }
 }
 

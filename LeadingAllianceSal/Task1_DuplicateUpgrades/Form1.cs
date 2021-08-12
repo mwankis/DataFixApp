@@ -134,11 +134,14 @@ namespace Task1_DuplicateUpgrades
         {           
             string crmServerName = crmServer.Text;
             string crmOrganizationName = organisationName.Text;
-            string userNameVlue = userName.Text;
+            string userNameValue = userName.Text;
             string passwordValue = password.Text;
-            _organizationService = OrganisationService.GetCrmOrgService(
-             crmServerName, crmOrganizationName,
-             userNameVlue, passwordValue);
+            var soapUrlEndpoint = soapUrl.Text;
+            //_organizationService = OrganisationService.GetCrmOrgService(
+            // crmServerName, crmOrganizationName,
+            // userNameValue, passwordValue);
+            var getOrganizationService = ConnectToCRM.ConnectToMSCRM(userNameValue, passwordValue, soapUrlEndpoint);
+            _organizationService = getOrganizationService.OrganizationService;
             var loggedInUser = DynamicsService.TestConnection(_organizationService);
             if (!string.IsNullOrEmpty(loggedInUser))
             {
