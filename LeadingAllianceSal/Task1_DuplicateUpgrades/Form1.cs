@@ -22,6 +22,8 @@ namespace Task1_DuplicateUpgrades
 
         private void fetchBtn_Click(object sender, EventArgs e)
         {
+            dataRecordsGridView.Rows.Clear();
+            dataRecordsGridView.Refresh();
             _dataRecords = new Dictionary<DictionaryKey, List<Entity>>();
             var dateFrom = dateTimeFrom.Value;
             var query = new QueryExpression("new_upgrade")
@@ -30,11 +32,11 @@ namespace Task1_DuplicateUpgrades
             };
             query.AddOrder("new_customerid", OrderType.Ascending);
             query.AddOrder("new_date", OrderType.Ascending);
-            if (dateFrom != null)
+            var isChecked = dateFilterCheckBox.Checked;
+            if (isChecked)
             {
                 query.Criteria.AddCondition("createdon", ConditionOperator.OnOrAfter, dateFrom);
-            }
-
+            }          
 
             var operationResult = DynamicsService.RetrieveAllRecords(_organizationService, query);
 
@@ -50,6 +52,7 @@ namespace Task1_DuplicateUpgrades
             }
             else
             {
+                applicationTabs.SelectedIndex = 2;
                 errorList.Items.Add(operationResult.ErrorMessage);
                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
             }          
@@ -58,127 +61,143 @@ namespace Task1_DuplicateUpgrades
 
         private void FormatCellsColor()
         {
-            foreach (DataGridViewRow row in dataRecordsGridView.Rows)
+            try
             {
-                var rowCell = row.Cells[5];
-                if (rowCell.Value != null)
+                foreach (DataGridViewRow row in dataRecordsGridView.Rows)
                 {
-                    string rowColour = row.Cells[5].Value.ToString();
-                    if (rowColour == "grey")
+                    var rowCell = row.Cells[5];
+                    if (rowCell.Value != null)
                     {
-                        row.DefaultCellStyle.BackColor = Color.LightGray;
-                        row.DefaultCellStyle.ForeColor = Color.DarkBlue;
+                        string rowColour = row.Cells[5].Value.ToString();
+                        if (rowColour == "grey")
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGray;
+                            row.DefaultCellStyle.ForeColor = Color.DarkBlue;
+                        }
                     }
                 }
-
             }
+            catch (Exception ex)
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add("Error occurred while executing FormatCellsColor() method. " + ex.Message);
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+            }
+           
         }
 
         private void AddRecordsToDictionary(List<Entity> entityCollection)
         {
-            foreach (var entity in entityCollection)
+            try
             {
-                if (entity.Attributes.ContainsKey("new_customerid")
-                    && entity.Attributes.ContainsKey("new_cardid")
-                    && entity.Attributes.ContainsKey("new_date"))
+                foreach (var entity in entityCollection)
                 {
-                    var customer = entity.GetAttributeValue<EntityReference>("new_customerid");
-                    var card = entity.GetAttributeValue<EntityReference>("new_cardid");
-                    var date = entity.GetAttributeValue<DateTime>("new_date");
-                    var key = new DictionaryKey
+                    if (entity.Attributes.ContainsKey("new_customerid")
+                        && entity.Attributes.ContainsKey("new_cardid")
+                        && entity.Attributes.ContainsKey("new_date"))
                     {
-                        Customer = customer.Id,
-                        Card = card.Id,
-                        DateTime = date
-                    };
+                        var customer = entity.GetAttributeValue<EntityReference>("new_customerid");
+                        var card = entity.GetAttributeValue<EntityReference>("new_cardid");
+                        var date = entity.GetAttributeValue<DateTime>("new_date");
+                        var key = new DictionaryKey
+                        {
+                            Customer = customer.Id,
+                            Card = card.Id,
+                            DateTime = date
+                        };
 
-                    if (_dataRecords.ContainsKey(key))
-                    {
-                        _dataRecords[key].Add(entity);
+                        if (_dataRecords.ContainsKey(key))
+                        {
+                            _dataRecords[key].Add(entity);
+                        }
+                        else
+                        {
+                            var dataRecord = new List<Entity>();
+                            dataRecord.Add(entity);
+                            _dataRecords.Add(key, dataRecord);
+                        }
                     }
-                    else
-                    {
-                        var dataRecord = new List<Entity>();
-                        dataRecord.Add(entity);
-                        _dataRecords.Add(key, dataRecord);
-                    }
+
                 }
-
             }
+            catch (Exception ex)
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add("Error occurred while executing AddRecordsToDictionary() method. " + ex.Message);
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+            }
+            
         }
 
         private void AddRecordsToDataGridView()
         {
-            int colourCount = 0;
-            foreach (var dataEntry in _dataRecords.Values)
+            try
             {
-                foreach (var entity in dataEntry)
+                int colourCount = 0;
+                foreach (var dataEntry in _dataRecords.Values)
                 {
-                    var customer = entity.GetAttributeValue<EntityReference>("new_customerid");
-                    var card = entity.GetAttributeValue<EntityReference>("new_cardid");
-                    var date = entity.GetAttributeValue<DateTime>("new_date");
-                    var name = entity.GetAttributeValue<string>("new_name");
-                    var createdon = entity.GetAttributeValue<DateTime>("createdon");
-
-                    DataGridViewRow row = (DataGridViewRow)dataRecordsGridView.Rows[0].Clone();
-
-                    row.Cells[0].Value = name;
-                    row.Cells[1].Value = customer.Id.ToString();
-                    row.Cells[2].Value = card.Id.ToString();
-                    row.Cells[3].Value = date.ToString();
-                    row.Cells[4].Value = createdon.ToString();
-                    if (colourCount % 2 == 0)
+                    foreach (var entity in dataEntry)
                     {
-                        row.Cells[5].Value = "grey";
-                    }
+                        var customer = entity.GetAttributeValue<EntityReference>("new_customerid");
+                        var card = entity.GetAttributeValue<EntityReference>("new_cardid");
+                        var date = entity.GetAttributeValue<DateTime>("new_date");
+                        var name = entity.GetAttributeValue<string>("new_name");
+                        var createdon = entity.GetAttributeValue<DateTime>("createdon");
 
+                        DataGridViewRow row = (DataGridViewRow)dataRecordsGridView.Rows[0].Clone();
 
-                    dataRecordsGridView.Rows.Add(row);
-                }
-                colourCount++;
-            }
-        }
-
-        private void applyChanges_Click(object sender, EventArgs e)
-        {
-            foreach (var entityList in _dataRecords.Values)
-            {
-                if (entityList.Count > 0)
-                {
-                    var oldestRecord = GetOldestRecord(entityList);
-                    entityList.Remove(oldestRecord);
-                    foreach (var entity in entityList)
-                    {
-                        var operationResult = DynamicsService.DeactivateEntity(_organizationService, entity, 1, 2);
-                        if (!operationResult.Succeded)
+                        row.Cells[0].Value = name;
+                        row.Cells[1].Value = customer.Id.ToString();
+                        row.Cells[2].Value = card.Id.ToString();
+                        row.Cells[3].Value = date.ToString();
+                        row.Cells[4].Value = createdon.ToString();
+                        if (colourCount % 2 == 0)
                         {
-                            errorList.Items.Add("Failed to deactivate record with id: "+ entity.Id);
-                            errorList.Items.Add(operationResult.ErrorMessage);
-                            errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                            row.Cells[5].Value = "grey";
                         }
-                        else
-                        {
-                           errorList.Items.Add("Record successfully deactivated. Id: " + entity.Id);
-                           errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
-                        }                      
+
+
+                        dataRecordsGridView.Rows.Add(row);
                     }
+                    colourCount++;
                 }
             }
-        }
+            catch (Exception ex)
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add("Error occurred while executing AddRecordsToDataGridView() method. " + ex.Message);
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+            }
+            
+        }       
 
         private Entity GetOldestRecord(List<Entity> entityList)
         {
-            var tempOldest = entityList[0];
-            foreach (var entity in entityList)
+            var curId = Guid.Empty;
+            try
             {
-                var curDate = entity.GetAttributeValue<DateTime>("createdon");
-                var tempOldestDate = tempOldest.GetAttributeValue<DateTime>("createdon");
-                if (tempOldestDate > curDate)
+                var tempOldest = entityList[0];
+                foreach (var entity in entityList)
                 {
-                    tempOldest = entity;
+                    curId = entity.Id;
+                    var curDate = entity.GetAttributeValue<DateTime>("createdon");
+                    var tempOldestDate = tempOldest.GetAttributeValue<DateTime>("createdon");
+                    if (tempOldestDate > curDate)
+                    {
+                        tempOldest = entity;
+                    }
                 }
+                return tempOldest;
             }
-            return tempOldest;
+            catch (Exception ex)
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add("Error occurred while executing GetOldestRecord() method. Id: "+curId+". " + ex.Message);
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                return null;
+            }
+
+            
         }       
 
         private void testConnectionBtn_Click_1(object sender, EventArgs e)
@@ -234,6 +253,73 @@ namespace Task1_DuplicateUpgrades
                 password.PasswordChar = '*';
             }
            
+        }
+
+        private void onDateFilterCheckBoxChange(object sender, EventArgs e)
+        {
+            var isChecked = dateFilterCheckBox.Checked;
+            if (isChecked)
+            {
+                fromDate.Visible = true;
+                dateTimeFrom.Visible = true;
+            }
+            else
+            {
+                fromDate.Visible = false;
+                dateTimeFrom.Visible = false;
+            }
+        }     
+
+        private void applyChanges_Click(object sender, EventArgs e)
+        {
+            if (_organizationService == null || _dataRecords == null )
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add("No crm connection please navigate to Connect To CRM tab, enter all required fields " +
+                    "and click test connection");
+                errorList.Items.Add("Or click fetch items first and then click apply changes");
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                return;
+            }
+            if ( _dataRecords.Values.Count == 0)
+            {
+                errorList.Items.Add("No items where returned");
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                return;
+            }
+            try
+            {
+                foreach (var entityList in _dataRecords.Values)
+                {
+                    if (entityList.Count > 0)
+                    {
+                        var oldestRecord = GetOldestRecord(entityList);
+                        entityList.Remove(oldestRecord);
+                        foreach (var entity in entityList)
+                        {
+                            var operationResult = DynamicsService.DeactivateEntity(_organizationService, entity, 1, 2);
+                            if (!operationResult.Succeded)
+                            {
+                                applicationTabs.SelectedIndex = 2;
+                                errorList.Items.Add("Failed to deactivate record with id: " + entity.Id);
+                                errorList.Items.Add(operationResult.ErrorMessage);
+                                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                            }
+                            else
+                            {
+                                errorList.Items.Add("Record successfully deactivated. Id: " + entity.Id);
+                                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add("Error occurred while executing applyChanges_Click() method. " + ex.Message);
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+            }
         }
     }
 }

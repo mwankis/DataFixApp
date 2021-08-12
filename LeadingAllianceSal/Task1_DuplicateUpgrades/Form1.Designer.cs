@@ -41,6 +41,7 @@
             this.userName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.fetchDataTab = new System.Windows.Forms.TabPage();
+            this.dateFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.dataRecordsGridView = new System.Windows.Forms.DataGridView();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +51,7 @@
             this.Colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recordCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.fromDate = new System.Windows.Forms.Label();
             this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.applyChanges = new System.Windows.Forms.Button();
             this.fetchBtn = new System.Windows.Forms.Button();
@@ -203,10 +204,11 @@
             // 
             // fetchDataTab
             // 
+            this.fetchDataTab.Controls.Add(this.dateFilterCheckBox);
             this.fetchDataTab.Controls.Add(this.dataRecordsGridView);
             this.fetchDataTab.Controls.Add(this.recordCount);
             this.fetchDataTab.Controls.Add(this.label7);
-            this.fetchDataTab.Controls.Add(this.label1);
+            this.fetchDataTab.Controls.Add(this.fromDate);
             this.fetchDataTab.Controls.Add(this.dateTimeFrom);
             this.fetchDataTab.Controls.Add(this.applyChanges);
             this.fetchDataTab.Controls.Add(this.fetchBtn);
@@ -219,6 +221,17 @@
             this.fetchDataTab.TabIndex = 0;
             this.fetchDataTab.Text = "Fetch Data && Apply Changes";
             this.fetchDataTab.UseVisualStyleBackColor = true;
+            // 
+            // dateFilterCheckBox
+            // 
+            this.dateFilterCheckBox.AutoSize = true;
+            this.dateFilterCheckBox.Location = new System.Drawing.Point(314, 16);
+            this.dateFilterCheckBox.Name = "dateFilterCheckBox";
+            this.dateFilterCheckBox.Size = new System.Drawing.Size(145, 24);
+            this.dateFilterCheckBox.TabIndex = 11;
+            this.dateFilterCheckBox.Text = "Filter with Date";
+            this.dateFilterCheckBox.UseVisualStyleBackColor = true;
+            this.dateFilterCheckBox.CheckedChanged += new System.EventHandler(this.onDateFilterCheckBoxChange);
             // 
             // dataRecordsGridView
             // 
@@ -296,23 +309,25 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Count";
             // 
-            // label1
+            // fromDate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(156, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "From";
+            this.fromDate.AutoSize = true;
+            this.fromDate.Location = new System.Drawing.Point(484, 18);
+            this.fromDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fromDate.Name = "fromDate";
+            this.fromDate.Size = new System.Drawing.Size(48, 20);
+            this.fromDate.TabIndex = 5;
+            this.fromDate.Text = "From";
+            this.fromDate.Visible = false;
             // 
             // dateTimeFrom
             // 
-            this.dateTimeFrom.Location = new System.Drawing.Point(216, 17);
+            this.dateTimeFrom.Location = new System.Drawing.Point(565, 15);
             this.dateTimeFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(277, 26);
             this.dateTimeFrom.TabIndex = 4;
+            this.dateTimeFrom.Visible = false;
             // 
             // applyChanges
             // 
@@ -324,6 +339,7 @@
             this.applyChanges.TabIndex = 2;
             this.applyChanges.Text = "Apply Changes";
             this.applyChanges.UseVisualStyleBackColor = true;
+            this.applyChanges.Click += new System.EventHandler(this.applyChanges_Click);
             // 
             // fetchBtn
             // 
@@ -389,6 +405,7 @@
             this.ClientSize = new System.Drawing.Size(1215, 554);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
+            //this.Name = "Form1";
             this.Text = "Task1_DuplicateUpgrades";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.applicationTabs.ResumeLayout(false);
@@ -415,7 +432,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button applyChanges;
         private System.Windows.Forms.DateTimePicker dateTimeFrom;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label fromDate;
         private System.Windows.Forms.TabPage connectionTab;
         private System.Windows.Forms.Button testConnectionBtn;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -438,6 +455,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NewDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedOn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Colour;
+        private System.Windows.Forms.CheckBox dateFilterCheckBox;
     }
 }
 

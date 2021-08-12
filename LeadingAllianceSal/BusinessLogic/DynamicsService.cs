@@ -14,6 +14,13 @@ namespace BusinessLogic
         public static OperationResult GetEntityCollection(IOrganizationService orgService, QueryExpression query)
         {
             var response = new OperationResult();
+            if (orgService == null)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "No crm connection please navigate to Connect To CRM tab, enter all required fields " +
+                    "and click test connection";
+                return response;
+            }
             try
             {
                 var entityCollection = orgService.RetrieveMultiple(query);
@@ -35,9 +42,18 @@ namespace BusinessLogic
             
         }        
 
-        public static OperationResult RetrieveAllRecords(IOrganizationService service, QueryExpression query)
+        public static OperationResult RetrieveAllRecords(IOrganizationService orgService, QueryExpression query)
         {
             var response = new OperationResult();
+
+            if (orgService == null)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "No crm connection please navigate to Connect To CRM tab, enter all required fields " +
+                    "and click test connection";
+                return response;
+            }
+
             try
             {
                 var pageNumber = 1;
@@ -51,7 +67,7 @@ namespace BusinessLogic
                         query.PageInfo.PageNumber = pageNumber;
                         query.PageInfo.PagingCookie = pagingCookie;
                     }
-                    resp = service.RetrieveMultiple(query);
+                    resp = orgService.RetrieveMultiple(query);
                     if (resp.MoreRecords)
                     {
                         pageNumber++;
@@ -82,6 +98,13 @@ namespace BusinessLogic
         public static OperationResult GetEntity(IOrganizationService orgService, string entityName, Guid id, string [] columns )
         {
             var response = new OperationResult();
+            if (orgService == null)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "No crm connection please navigate to Connect To CRM tab, enter all required fields " +
+                    "and click test connection";
+                return response;
+            }
             try
             {
                 var entity = orgService.Retrieve(entityName, id, new ColumnSet(columns));
@@ -107,6 +130,13 @@ namespace BusinessLogic
         public static OperationResult UpdateEntity(IOrganizationService orgService, Entity entity)
         {
             var response = new OperationResult();
+            if (orgService == null)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "No crm connection please navigate to Connect To CRM tab, enter all required fields " +
+                    "and click test connection";
+                return response;
+            }
             try
             {
                 orgService.Update(entity);
@@ -129,6 +159,14 @@ namespace BusinessLogic
         public static OperationResult DeactivateEntity(IOrganizationService orgService, Entity entity, int state, int status)
         {
             var response = new OperationResult();
+            if (orgService == null)
+            {
+                response.Succeded = false;
+                response.ErrorMessage = "No crm connection please navigate to Connect To CRM tab, enter all required fields " +
+                    "and click test connection";
+                return response;
+            }
+
             try
             {
                 var req = new SetStateRequest
