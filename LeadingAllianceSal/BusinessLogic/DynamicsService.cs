@@ -176,7 +176,7 @@ namespace BusinessLogic
                     Status = new OptionSetValue(status)
                  };
                
-                orgService.Update(entity);
+                orgService.Execute(req);
                 return response;
             }
             catch (FaultException<OrganizationServiceFault> ex)

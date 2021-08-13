@@ -36,8 +36,8 @@ namespace Task1_DuplicateUpgrades
             if (isChecked)
             {
                 query.Criteria.AddCondition("createdon", ConditionOperator.OnOrAfter, dateFrom);
-            }          
-
+            }
+            query.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
             var operationResult = DynamicsService.RetrieveAllRecords(_organizationService, query);
 
             if (operationResult.Succeded)
@@ -327,6 +327,7 @@ namespace Task1_DuplicateUpgrades
                                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
                             }
                         }
+                        applicationTabs.SelectedIndex = 2;
                     }
                 }
             }
