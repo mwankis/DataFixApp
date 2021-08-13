@@ -63,6 +63,7 @@
     <Compile Include="ConnectToCRM.cs" />
     <Compile Include="DynamicsConnectionResult.cs" />
     <Compile Include="DynamicsService.cs" />
+    <Compile Include="GenerateTestData.cs" />
     <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

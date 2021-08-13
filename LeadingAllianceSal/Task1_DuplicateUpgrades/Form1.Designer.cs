@@ -59,6 +59,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.loadTestData = new System.Windows.Forms.Button();
             this.applicationTabs.SuspendLayout();
             this.connectionTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -81,7 +82,7 @@
             this.applicationTabs.Margin = new System.Windows.Forms.Padding(4);
             this.applicationTabs.Name = "applicationTabs";
             this.applicationTabs.SelectedIndex = 0;
-            this.applicationTabs.Size = new System.Drawing.Size(1207, 535);
+            this.applicationTabs.Size = new System.Drawing.Size(1281, 535);
             this.applicationTabs.TabIndex = 3;
             // 
             // connectionTab
@@ -204,6 +205,7 @@
             // 
             // fetchDataTab
             // 
+            this.fetchDataTab.Controls.Add(this.loadTestData);
             this.fetchDataTab.Controls.Add(this.dateFilterCheckBox);
             this.fetchDataTab.Controls.Add(this.dataRecordsGridView);
             this.fetchDataTab.Controls.Add(this.recordCount);
@@ -217,7 +219,7 @@
             this.fetchDataTab.Margin = new System.Windows.Forms.Padding(4);
             this.fetchDataTab.Name = "fetchDataTab";
             this.fetchDataTab.Padding = new System.Windows.Forms.Padding(4);
-            this.fetchDataTab.Size = new System.Drawing.Size(1199, 506);
+            this.fetchDataTab.Size = new System.Drawing.Size(1273, 506);
             this.fetchDataTab.TabIndex = 0;
             this.fetchDataTab.Text = "Fetch Data && Apply Changes";
             this.fetchDataTab.UseVisualStyleBackColor = true;
@@ -225,7 +227,7 @@
             // dateFilterCheckBox
             // 
             this.dateFilterCheckBox.AutoSize = true;
-            this.dateFilterCheckBox.Location = new System.Drawing.Point(314, 16);
+            this.dateFilterCheckBox.Location = new System.Drawing.Point(451, 16);
             this.dateFilterCheckBox.Name = "dateFilterCheckBox";
             this.dateFilterCheckBox.Size = new System.Drawing.Size(145, 24);
             this.dateFilterCheckBox.TabIndex = 11;
@@ -250,7 +252,7 @@
             this.dataRecordsGridView.Location = new System.Drawing.Point(7, 53);
             this.dataRecordsGridView.Name = "dataRecordsGridView";
             this.dataRecordsGridView.RowTemplate.Height = 24;
-            this.dataRecordsGridView.Size = new System.Drawing.Size(1181, 446);
+            this.dataRecordsGridView.Size = new System.Drawing.Size(1255, 446);
             this.dataRecordsGridView.TabIndex = 10;
             // 
             // Name
@@ -312,7 +314,7 @@
             // fromDate
             // 
             this.fromDate.AutoSize = true;
-            this.fromDate.Location = new System.Drawing.Point(484, 18);
+            this.fromDate.Location = new System.Drawing.Point(603, 17);
             this.fromDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fromDate.Name = "fromDate";
             this.fromDate.Size = new System.Drawing.Size(48, 20);
@@ -322,7 +324,7 @@
             // 
             // dateTimeFrom
             // 
-            this.dateTimeFrom.Location = new System.Drawing.Point(565, 15);
+            this.dateTimeFrom.Location = new System.Drawing.Point(668, 12);
             this.dateTimeFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(277, 26);
@@ -332,7 +334,7 @@
             // applyChanges
             // 
             this.applyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.applyChanges.Location = new System.Drawing.Point(1040, 7);
+            this.applyChanges.Location = new System.Drawing.Point(1114, 5);
             this.applyChanges.Margin = new System.Windows.Forms.Padding(4);
             this.applyChanges.Name = "applyChanges";
             this.applyChanges.Size = new System.Drawing.Size(148, 39);
@@ -344,7 +346,7 @@
             // fetchBtn
             // 
             this.fetchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchBtn.Location = new System.Drawing.Point(872, 7);
+            this.fetchBtn.Location = new System.Drawing.Point(963, 5);
             this.fetchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.fetchBtn.Name = "fetchBtn";
             this.fetchBtn.Size = new System.Drawing.Size(143, 37);
@@ -395,14 +397,24 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1215, 554);
+            this.panel1.Size = new System.Drawing.Size(1289, 554);
             this.panel1.TabIndex = 4;
+            // 
+            // loadTestData
+            // 
+            this.loadTestData.Location = new System.Drawing.Point(275, 14);
+            this.loadTestData.Name = "loadTestData";
+            this.loadTestData.Size = new System.Drawing.Size(136, 32);
+            this.loadTestData.TabIndex = 12;
+            this.loadTestData.Text = "Load Test Data";
+            this.loadTestData.UseVisualStyleBackColor = true;
+            this.loadTestData.Click += new System.EventHandler(this.loadTestData_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 554);
+            this.ClientSize = new System.Drawing.Size(1289, 554);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             //this.Name = "Form1";
@@ -456,6 +468,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedOn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Colour;
         private System.Windows.Forms.CheckBox dateFilterCheckBox;
+        private System.Windows.Forms.Button loadTestData;
     }
 }
 

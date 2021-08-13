@@ -11,7 +11,7 @@ namespace Task1_DuplicateUpgrades
 {
     public partial class Form1 : Form
     {
-        private Dictionary<DictionaryKey, List<Entity>> _dataRecords; 
+        private List<UpgradeModel> _dataRecords; 
 
         private IOrganizationService _organizationService;
 
@@ -24,7 +24,7 @@ namespace Task1_DuplicateUpgrades
         {
             dataRecordsGridView.Rows.Clear();
             dataRecordsGridView.Refresh();
-            _dataRecords = new Dictionary<DictionaryKey, List<Entity>>();
+            _dataRecords = new List<UpgradeModel>();
             var dateFrom = dateTimeFrom.Value;
             var query = new QueryExpression("new_upgrade")
             {
@@ -106,15 +106,17 @@ namespace Task1_DuplicateUpgrades
                             DateTime = date
                         };
 
-                        if (_dataRecords.ContainsKey(key))
+                        var curData = GetList(key);
+                        if (curData != null)
                         {
-                            _dataRecords[key].Add(entity);
+                            curData.EntityList.Add(entity);
                         }
                         else
                         {
-                            var dataRecord = new List<Entity>();
-                            dataRecord.Add(entity);
-                            _dataRecords.Add(key, dataRecord);
+                            var dataEntry = new UpgradeModel();
+                            dataEntry.EntityList.Add(entity);
+                            dataEntry.DictionaryKey = key;
+                            _dataRecords.Add(dataEntry);
                         }
                     }
 
@@ -129,14 +131,28 @@ namespace Task1_DuplicateUpgrades
             
         }
 
+        private UpgradeModel GetList(DictionaryKey key)
+        {
+            foreach (var record in _dataRecords)
+            {
+                if (record.DictionaryKey.Card.Equals(key.Card) && record.DictionaryKey.Customer.Equals(key.Customer)
+                    && record.DictionaryKey.DateTime.Equals(key.DateTime))
+                {
+                    return record;
+                }                
+            }
+
+            return null;
+        }
+
         private void AddRecordsToDataGridView()
         {
             try
             {
                 int colourCount = 0;
-                foreach (var dataEntry in _dataRecords.Values)
+                foreach (var dataEntry in _dataRecords)
                 {
-                    foreach (var entity in dataEntry)
+                    foreach (var entity in dataEntry.EntityList)
                     {
                         var customer = entity.GetAttributeValue<EntityReference>("new_customerid");
                         var card = entity.GetAttributeValue<EntityReference>("new_cardid");
@@ -281,7 +297,7 @@ namespace Task1_DuplicateUpgrades
                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
                 return;
             }
-            if ( _dataRecords.Values.Count == 0)
+            if ( _dataRecords.Count == 0)
             {
                 errorList.Items.Add("No items where returned");
                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
@@ -289,13 +305,13 @@ namespace Task1_DuplicateUpgrades
             }
             try
             {
-                foreach (var entityList in _dataRecords.Values)
+                foreach (var entityList in _dataRecords)
                 {
-                    if (entityList.Count > 0)
+                    if (entityList.EntityList.Count > 0)
                     {
-                        var oldestRecord = GetOldestRecord(entityList);
-                        entityList.Remove(oldestRecord);
-                        foreach (var entity in entityList)
+                        var oldestRecord = GetOldestRecord(entityList.EntityList);
+                        entityList.EntityList.Remove(oldestRecord);
+                        foreach (var entity in entityList.EntityList)
                         {
                             var operationResult = DynamicsService.DeactivateEntity(_organizationService, entity, 1, 2);
                             if (!operationResult.Succeded)
@@ -318,6 +334,31 @@ namespace Task1_DuplicateUpgrades
             {
                 applicationTabs.SelectedIndex = 2;
                 errorList.Items.Add("Error occurred while executing applyChanges_Click() method. " + ex.Message);
+                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+            }
+        }
+
+        private void loadTestData_Click(object sender, EventArgs e)
+        {
+            dataRecordsGridView.Rows.Clear();
+            dataRecordsGridView.Refresh();
+            _dataRecords = new List<UpgradeModel>(); 
+            var operationResult = GenerateTestData.GetTestData();
+
+            if (operationResult.Succeded)
+            {
+                recordCount.Text = "" + operationResult.EntityList.Count;
+
+                AddRecordsToDictionary(operationResult.EntityList);
+
+                AddRecordsToDataGridView();
+
+                FormatCellsColor();
+            }
+            else
+            {
+                applicationTabs.SelectedIndex = 2;
+                errorList.Items.Add(operationResult.ErrorMessage);
                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
             }
         }
