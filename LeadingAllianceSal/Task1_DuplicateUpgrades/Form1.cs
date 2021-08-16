@@ -303,8 +303,11 @@ namespace Task1_DuplicateUpgrades
                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
                 return;
             }
+
+            applicationTabs.SelectedIndex = 2;
             try
             {
+                int curRecordCount = 0;
                 foreach (var entityList in _dataRecords)
                 {
                     if (entityList.EntityList.Count > 0)
@@ -323,11 +326,11 @@ namespace Task1_DuplicateUpgrades
                             }
                             else
                             {
-                                errorList.Items.Add("Record successfully deactivated. Id: " + entity.Id);
+                                curRecordCount++;
+                                errorList.Items.Add("Record successfully deactivated. Id: " + entity.Id + ". Record: " + curRecordCount + " of " + _dataRecords.Count);
                                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
                             }
-                        }
-                        applicationTabs.SelectedIndex = 2;
+                        }                        
                     }
                 }
             }

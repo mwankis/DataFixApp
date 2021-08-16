@@ -43,12 +43,6 @@
             this.fetchDataTab = new System.Windows.Forms.TabPage();
             this.dateFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.dataRecordsGridView = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CardId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NewDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recordCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.Label();
@@ -58,6 +52,13 @@
             this.errorTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CardId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NewDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applicationTabs.SuspendLayout();
             this.connectionTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -243,50 +244,15 @@
             this.Name,
             this.CustomerId,
             this.CardId,
+            this.InvoiceNumber,
             this.NewDate,
             this.CreatedOn,
             this.Colour});
             this.dataRecordsGridView.Location = new System.Drawing.Point(7, 53);
             this.dataRecordsGridView.Name = "dataRecordsGridView";
             this.dataRecordsGridView.RowTemplate.Height = 24;
-            this.dataRecordsGridView.Size = new System.Drawing.Size(1255, 446);
+            this.dataRecordsGridView.Size = new System.Drawing.Size(1223, 446);
             this.dataRecordsGridView.TabIndex = 10;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.HeaderText = "CustomerId";
-            this.CustomerId.Name = "CustomerId";
-            this.CustomerId.ReadOnly = true;
-            // 
-            // CardId
-            // 
-            this.CardId.HeaderText = "CardId";
-            this.CardId.Name = "CardId";
-            this.CardId.ReadOnly = true;
-            // 
-            // NewDate
-            // 
-            this.NewDate.HeaderText = "New Date";
-            this.NewDate.Name = "NewDate";
-            this.NewDate.ReadOnly = true;
-            // 
-            // CreatedOn
-            // 
-            this.CreatedOn.HeaderText = "CreatedOn";
-            this.CreatedOn.Name = "CreatedOn";
-            this.CreatedOn.ReadOnly = true;
-            // 
-            // Colour
-            // 
-            this.Colour.HeaderText = "Colour";
-            this.Colour.Name = "Colour";
-            this.Colour.ReadOnly = true;
-            this.Colour.Visible = false;
             // 
             // recordCount
             // 
@@ -331,24 +297,26 @@
             // applyChanges
             // 
             this.applyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.applyChanges.Location = new System.Drawing.Point(1114, 5);
+            this.applyChanges.Location = new System.Drawing.Point(1070, 5);
             this.applyChanges.Margin = new System.Windows.Forms.Padding(4);
             this.applyChanges.Name = "applyChanges";
             this.applyChanges.Size = new System.Drawing.Size(148, 39);
             this.applyChanges.TabIndex = 2;
             this.applyChanges.Text = "Apply Changes";
             this.applyChanges.UseVisualStyleBackColor = true;
+            this.applyChanges.Click += new System.EventHandler(this.applyChanges_Click);
             // 
             // fetchBtn
             // 
             this.fetchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchBtn.Location = new System.Drawing.Point(963, 5);
+            this.fetchBtn.Location = new System.Drawing.Point(914, 5);
             this.fetchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.fetchBtn.Name = "fetchBtn";
             this.fetchBtn.Size = new System.Drawing.Size(143, 37);
             this.fetchBtn.TabIndex = 0;
             this.fetchBtn.Text = "Fetch Records";
             this.fetchBtn.UseVisualStyleBackColor = true;
+            this.fetchBtn.Click += new System.EventHandler(this.fetchBtn_Click);
             // 
             // errorTab
             // 
@@ -385,12 +353,54 @@
             this.errorList.Size = new System.Drawing.Size(1218, 454);
             this.errorList.TabIndex = 0;
             // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            // 
+            // CardId
+            // 
+            this.CardId.HeaderText = "CardId";
+            this.CardId.Name = "CardId";
+            this.CardId.ReadOnly = true;
+            // 
+            // InvoiceNumber
+            // 
+            this.InvoiceNumber.HeaderText = "Invoice Number";
+            this.InvoiceNumber.Name = "InvoiceNumber";
+            // 
+            // NewDate
+            // 
+            this.NewDate.HeaderText = "Invoice Date";
+            this.NewDate.Name = "NewDate";
+            this.NewDate.ReadOnly = true;
+            // 
+            // CreatedOn
+            // 
+            this.CreatedOn.HeaderText = "CreatedOn";
+            this.CreatedOn.Name = "CreatedOn";
+            this.CreatedOn.ReadOnly = true;
+            // 
+            // Colour
+            // 
+            this.Colour.HeaderText = "Colour";
+            this.Colour.Name = "Colour";
+            this.Colour.ReadOnly = true;
+            this.Colour.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 553);
             this.Controls.Add(this.applicationTabs);
+            //this.Name = "Form1";
             this.Text = "Task2_DuplicateInvoices";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.applicationTabs.ResumeLayout(false);
@@ -424,12 +434,6 @@
         private System.Windows.Forms.TabPage fetchDataTab;
         private System.Windows.Forms.CheckBox dateFilterCheckBox;
         private System.Windows.Forms.DataGridView dataRecordsGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CardId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NewDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedOn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Colour;
         private System.Windows.Forms.Label recordCount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label fromDate;
@@ -439,6 +443,13 @@
         private System.Windows.Forms.TabPage errorTab;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox errorList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CardId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NewDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedOn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Colour;
     }
 }
 
