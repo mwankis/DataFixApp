@@ -36,6 +36,7 @@ namespace Task1_DuplicateUpgrades
             if (isChecked)
             {
                 query.Criteria.AddCondition("createdon", ConditionOperator.OnOrAfter, dateFrom);
+                query.Criteria.AddCondition("createdon", ConditionOperator.OnOrBefore, dateFrom);
             }
             query.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
             var operationResult = DynamicsService.RetrieveAllRecords(_organizationService, query);

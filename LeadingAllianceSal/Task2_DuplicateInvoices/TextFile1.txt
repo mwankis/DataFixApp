@@ -1,4 +1,23 @@
-﻿Duplicate invoices:
+﻿We would like to write the below custom codes to fix some issues existing in on premise crm 2015:
+Duplicate Upgrades:
+Get duplicate upgrades that have the same customer, customer card, and upgrade date.
+And deactivate the most recent upgrade + deactivate the upgrade invoice related to it.
+
+Duplicate invoices:
 Get duplicate invoices that have the same customer, customer card, invoice number, invoice date and created date
 Deactivate one of them
 (this has to be run once on all existing invoices after a specific time & then on daily basis on today’s invoices)
+
+Missing ‘09/09/2019 opening’ invoices:
+Run the api that gets the points from Dolphin starting 09/09/2019
+For each returned, check if an Add/Deduct record already exists, if yes skip, if no create it
+(we need to check here the current sync algorithm for the exact algorithm to use for the missing ones)
+
+Missing Invoices:
+Run the api that gets the invoices from Dolphin starting a specific date (TBD)
+For each returned, check if an invoice record already exists, if yes skip, if no create it
+(we need to check here the current sync algorithm for the exact algorithm to use for the missing ones)
+
+Zero awarded points:
+Get from CRM purchase invoices with 0 awarded points, for each invoice call an api to get the points
+of the invoice from Dolphin and update in CRM if needed
