@@ -1,0 +1,12 @@
+{
+  "DynamicsConnections": {
+    "Url": "dynamicsurl",
+    "Username": "username",
+    "Password": "yourpassword"
+  },
+  "Task3ApiDetails": {
+    "SdURL": "SdURL",
+    "SdUser": "SdUser",
+    "SdPassword": "SdPassword"
+  }
+}
