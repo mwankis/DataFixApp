@@ -135,9 +135,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ScopeOfWork.txt" />
+    <Content Include="Notes\ScopeOfWork.txt" />
     <Content Include="Task1\Files\notes.txt" />
-    <Content Include="Task3_Missing Invoices\task3Notes.txt" />
+    <Content Include="Notes\task3Notes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
