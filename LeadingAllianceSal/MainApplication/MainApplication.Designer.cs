@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.connectionStatus = new System.Windows.Forms.Label();
             this.testConnectionBtn = new System.Windows.Forms.Button();
+            this.task5Btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,31 +59,33 @@
             // 
             // task2Btn
             // 
-            this.task2Btn.Location = new System.Drawing.Point(216, 320);
+            this.task2Btn.Location = new System.Drawing.Point(175, 320);
             this.task2Btn.Name = "task2Btn";
             this.task2Btn.Size = new System.Drawing.Size(105, 50);
             this.task2Btn.TabIndex = 1;
             this.task2Btn.Text = "Task 2 (Duplicate Invoices)";
             this.task2Btn.UseVisualStyleBackColor = true;
+            this.task2Btn.Click += new System.EventHandler(this.task2Btn_Click);
             // 
             // task3Btn
             // 
-            this.task3Btn.Location = new System.Drawing.Point(417, 320);
+            this.task3Btn.Location = new System.Drawing.Point(301, 320);
             this.task3Btn.Name = "task3Btn";
             this.task3Btn.Size = new System.Drawing.Size(129, 50);
             this.task3Btn.TabIndex = 2;
-            this.task3Btn.Text = "Task 3 (Missing Openning Invoices)";
+            this.task3Btn.Text = "Task 3 (Missing Invoices)";
             this.task3Btn.UseVisualStyleBackColor = true;
             this.task3Btn.Click += new System.EventHandler(this.task3Btn_Click);
             // 
             // task4Btn
             // 
-            this.task4Btn.Location = new System.Drawing.Point(627, 320);
+            this.task4Btn.Location = new System.Drawing.Point(464, 320);
             this.task4Btn.Name = "task4Btn";
-            this.task4Btn.Size = new System.Drawing.Size(93, 50);
+            this.task4Btn.Size = new System.Drawing.Size(125, 50);
             this.task4Btn.TabIndex = 3;
-            this.task4Btn.Text = "Task 4 (Missing Invoices)";
+            this.task4Btn.Text = "Task 4 (Missing Openning  Invoices)";
             this.task4Btn.UseVisualStyleBackColor = true;
+            this.task4Btn.Click += new System.EventHandler(this.task4Btn_Click);
             // 
             // groupBox1
             // 
@@ -193,11 +196,22 @@
             this.testConnectionBtn.UseVisualStyleBackColor = true;
             this.testConnectionBtn.Click += new System.EventHandler(this.testConnectionBtn_Click);
             // 
+            // task5Btn
+            // 
+            this.task5Btn.Location = new System.Drawing.Point(616, 320);
+            this.task5Btn.Name = "task5Btn";
+            this.task5Btn.Size = new System.Drawing.Size(104, 50);
+            this.task5Btn.TabIndex = 20;
+            this.task5Btn.Text = "Task 5 (Zero Awarded Points)";
+            this.task5Btn.UseVisualStyleBackColor = true;
+            this.task5Btn.Click += new System.EventHandler(this.task5Btn_Click);
+            // 
             // MainApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 450);
+            this.Controls.Add(this.task5Btn);
             this.Controls.Add(this.connectionStatus);
             this.Controls.Add(this.testConnectionBtn);
             this.Controls.Add(this.groupBox1);
@@ -232,6 +246,7 @@
         private System.Windows.Forms.Label connectionStatus;
         private System.Windows.Forms.Button testConnectionBtn;
         private System.Windows.Forms.CheckBox loadAppSettings;
+        private System.Windows.Forms.Button task5Btn;
     }
 }
 

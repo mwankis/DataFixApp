@@ -9,6 +9,9 @@ using Microsoft.Xrm.Sdk;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using MainApplication.Task2_DuplicateInvoices.Forms;
+using MainApplication.Task5_ZeroAwardedPoints.Forms;
+using MainApplication.Task4_MissingOpeningInvoices.Forms;
 
 namespace MainApplication
 {
@@ -76,9 +79,38 @@ namespace MainApplication
 
         private void task1Btn_Click(object sender, EventArgs e)
         {          
-            var task1 = new Task1_Form(_organizationService);
-            task1.WindowState = FormWindowState.Maximized;
-            task1.Show();
+            var form = new Task1_Form(_organizationService);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+
+        private void task3Btn_Click(object sender, EventArgs e)
+        {
+            var form = new Task3_Form(_organizationService);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void task2Btn_Click(object sender, EventArgs e)
+        {
+            var form = new Task2_DuplicateInvoicesForm(_organizationService);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void task4Btn_Click(object sender, EventArgs e)
+        {
+            var form = new Task4_MissingOpeningInvoicesForm(_organizationService);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void task5Btn_Click(object sender, EventArgs e)
+        {
+            var form = new Task5_ZeroAwardedPointsForm(_organizationService);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
         }
 
         private void loadAppSettingsValues(object sender, EventArgs e)
@@ -98,13 +130,6 @@ namespace MainApplication
                 userName.Text = string.Empty; 
                 password.Text = string.Empty;
             }
-        }
-
-        private void task3Btn_Click(object sender, EventArgs e)
-        {
-            var task3 = new Task3_Form(_organizationService);
-            task3.WindowState = FormWindowState.Maximized;
-            task3.Show();
-        }
+        }       
     }
 }
