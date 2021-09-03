@@ -100,6 +100,7 @@
     <Compile Include="Task3_Missing Invoices\Models\Api\ApiInvoiceResponse.cs" />
     <Compile Include="Task3_Missing Invoices\Models\Crm\CrmResponse.cs" />
     <Compile Include="Task4_MissingOpeningInvoices\BusinessLogic\ApiPointsLogic.cs" />
+    <Compile Include="Task4_MissingOpeningInvoices\BusinessLogic\CrmAdddeductLogic.cs" />
     <Compile Include="Task4_MissingOpeningInvoices\Forms\Task4_MissingOpeningInvoicesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,11 +108,20 @@
       <DependentUpon>Task4_MissingOpeningInvoicesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Task4_MissingOpeningInvoices\Models\Api\ApiPointsResponse.cs" />
+    <Compile Include="Task5_ZeroAwardedPoints\BusinessLogic\CallApiLogic.cs" />
+    <Compile Include="Task5_ZeroAwardedPoints\BusinessLogic\CrmPurchaseInvoiceLogic.cs" />
     <Compile Include="Task5_ZeroAwardedPoints\Forms\Task5_ZeroAwardedPointsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Task5_ZeroAwardedPoints\Forms\Task5_ZeroAwardedPointsForm.Designer.cs">
       <DependentUpon>Task5_ZeroAwardedPointsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task5_ZeroAwardedPoints\Models\ApiZeroPointsResponse.cs" />
+    <Compile Include="Task6_DuplicateAddDeduct\Forms\Task6_DuplicateAddDeductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task6_DuplicateAddDeduct\Forms\Task6_DuplicateAddDeductForm.Designer.cs">
+      <DependentUpon>Task6_DuplicateAddDeductForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainApplication.resx">
       <DependentUpon>MainApplication.cs</DependentUpon>
@@ -157,9 +167,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Task6_DuplicateAddDeduct\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{0e778f81-a643-438a-b51b-b40201b5326a}</Project>
@@ -170,6 +178,12 @@
     <Content Include="Notes\ScopeOfWork.txt" />
     <Content Include="Notes\Task1Notes.txt" />
     <Content Include="Notes\task3Notes.txt" />
+    <Content Include="Task1_Duplicate Upgrades\Duplicate Upgrades.txt" />
+    <Content Include="Task2_DuplicateInvoices\Duplicate invoices.txt" />
+    <Content Include="Task3_Missing Invoices\Missing Invoices.txt" />
+    <Content Include="Task4_MissingOpeningInvoices\Missing opening invoices.txt" />
+    <Content Include="Task5_ZeroAwardedPoints\Zero awarded points.txt" />
+    <Content Include="Task6_DuplicateAddDeduct\Adddeduct.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

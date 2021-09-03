@@ -1,0 +1,4 @@
+﻿Missing Invoices:
+Run the api that gets the invoices from Dolphin starting a specific date (TBD)
+For each returned, check if an invoice record already exists, if yes skip, if no create it
+(we need to check here the current sync algorithm for the exact algorithm to use for the missing ones)

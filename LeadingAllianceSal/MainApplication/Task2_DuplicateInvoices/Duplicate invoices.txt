@@ -1,0 +1,4 @@
+﻿Duplicate invoices:
+Get duplicate invoices that have the same customer, customer card, invoice number, invoice date and created date
+Deactivate one of them
+(this has to be run once on all existing invoices after a specific time & then on daily basis on today’s invoices)

@@ -1,0 +1,15 @@
+﻿Entity name: new_adddeduct
+Duplicates matching based on fields schema names:
+new_name=’Upgrade’, new_additiondeduction,
+new_customerid, Day of (new_date), new_points,
+new_reason = ‘Upgrade’
+
+For duplicate new_adddeduct records, deactivate the record + its related invoice (new_adddeductid)
+
+
+new_name => should be equal to Upgrade
+new_reason = should have value of ‘Upgrade’
+
+should deactivate the most recent
+
+adddeduct linked to invoice and it should also de-activated.

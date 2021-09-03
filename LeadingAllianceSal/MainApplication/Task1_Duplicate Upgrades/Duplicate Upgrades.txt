@@ -1,0 +1,3 @@
+﻿Duplicate Upgrades:
+Get duplicate upgrades that have the same customer, customer card, and upgrade date.
+And deactivate the most recent upgrade + deactivate the upgrade invoice related to it.
