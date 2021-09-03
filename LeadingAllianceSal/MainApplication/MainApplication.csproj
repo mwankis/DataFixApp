@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>MainApplication</RootNamespace>
     <AssemblyName>MainApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -134,6 +135,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Task1_Duplicate Upgrades\Forms\Task1_Form.resx">
       <DependentUpon>Task1_Form.cs</DependentUpon>
@@ -180,6 +182,7 @@
     <Content Include="Notes\task3Notes.txt" />
     <Content Include="Task1_Duplicate Upgrades\Duplicate Upgrades.txt" />
     <Content Include="Task2_DuplicateInvoices\Duplicate invoices.txt" />
+    <Content Include="Task3_Missing Invoices\codesample.txt" />
     <Content Include="Task3_Missing Invoices\Missing Invoices.txt" />
     <Content Include="Task4_MissingOpeningInvoices\Missing opening invoices.txt" />
     <Content Include="Task5_ZeroAwardedPoints\Zero awarded points.txt" />

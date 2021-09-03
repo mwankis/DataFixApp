@@ -22,7 +22,7 @@ namespace MainApplication.Task4_MissingOpeningInvoices.BusinessLogic
 
                 if (getAdddeduct.EntityList.Count == 0)
                 {
-                   var createResult = createInvoice(organizationService, apiPoint);
+                   var createResult = CreateAddDeduct(organizationService, apiPoint);
                    return createResult;
                 }
                 return $"Adddeduct record exists. Client: {apiPoint.ClientId} | Date: {apiPoint.Reason}";
@@ -33,11 +33,11 @@ namespace MainApplication.Task4_MissingOpeningInvoices.BusinessLogic
             }
         }
 
-        private static string createInvoice(IOrganizationService organizationService, ApiPoint apiPoint)
+        private static string CreateAddDeduct(IOrganizationService organizationService, ApiPoint apiPoint)
         {
             try
             {
-                var entity = new Entity();
+                var entity = new Entity("new_adddeduct");
                 var adddeductId = organizationService.Create(entity);
                 return $"Create Adddeduct with id: {adddeductId}. Points details => Client: {apiPoint.ClientId} | Date: {apiPoint.Reason} ";
             }
@@ -51,7 +51,7 @@ namespace MainApplication.Task4_MissingOpeningInvoices.BusinessLogic
         public static OperationResult GetAdddeduct(IOrganizationService organizationService,
             DateTime fromDate, DateTime toDate, ApiPoint apiPoint)
         {
-            var query = new QueryExpression()
+            var query = new QueryExpression("new_adddeduct")
             {
 
             };

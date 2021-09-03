@@ -23,7 +23,6 @@ namespace MainApplication.Task3.ApplicationLogic
             }
         }
       
-
         public static string CreateCrmInvoice(IOrganizationService orgService, ApiInvoice apiInvoice)
         {
             try
@@ -38,8 +37,7 @@ namespace MainApplication.Task3.ApplicationLogic
             }
 
         }
-
-
+        
         public static CrmResponse GetCrmInvoices(IOrganizationService orgService, DateTime fromDate, DateTime toDate)
         {
             var crmResponse = new CrmResponse();
@@ -71,8 +69,7 @@ namespace MainApplication.Task3.ApplicationLogic
             }          
             
         }
-
-
+        
         public static CrmResponse GetCrmInvoice(List<Entity> entities, ApiInvoice apiInvoice)
         {
             var crmResponse = new CrmResponse();

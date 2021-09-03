@@ -1,3 +1,8 @@
 ﻿Zero awarded points:
 Get from CRM purchase invoices with 0 awarded points, for each invoice call an api to get the points of
 the invoice from Dolphin and update in CRM if needed less
+
+=> get invoices from crm
+=> get invoices from GetNewInvoices
+
+=> map api Invoice to crm Invoice using invoiceNo, date and clientId

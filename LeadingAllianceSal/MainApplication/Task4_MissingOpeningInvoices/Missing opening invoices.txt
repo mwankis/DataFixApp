@@ -2,3 +2,22 @@
 Run the api that gets the points from Dolphin starting 09/09/2019
 For each returned, check if an Add/Deduct record already exists, if yes skip, if no create it
 (we need to check here the current sync algorithm for the exact algorithm to use for the missing ones)
+
+check if adddeduct exists in crm using these fields
+entAddDeduct["new_customerid"] = new EntityReference(Customer.LogicalName, Customer.Id);
+            entAddDeduct["new_name"] = Reason ?? "" + " " + DateTime.Now.ToShortDateString();
+            entAddDeduct["new_reason"] = Reason ?? "";
+
+            if (points >= 0)
+            //if (Reason?.ToLower() == "upgrade")
+            {
+                entAddDeduct["new_additiondeduction"] = false;
+                entAddDeduct["new_points"] = (int)points;
+            }
+            else
+            {
+                entAddDeduct["new_points"] = (int)points;
+                entAddDeduct["new_additiondeduction"] = true;
+            }
+
+            entAddDeduct["new_date"] = date;
