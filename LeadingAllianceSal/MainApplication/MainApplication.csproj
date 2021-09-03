@@ -124,6 +124,8 @@
     <Compile Include="Task6_DuplicateAddDeduct\Forms\Task6_DuplicateAddDeductForm.Designer.cs">
       <DependentUpon>Task6_DuplicateAddDeductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task6_DuplicateAddDeduct\Models\AddDeductModel.cs" />
+    <Compile Include="Task6_DuplicateAddDeduct\Models\DictionaryKey.cs" />
     <EmbeddedResource Include="MainApplication.resx">
       <DependentUpon>MainApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Task5_ZeroAwardedPoints\Forms\Task5_ZeroAwardedPointsForm.resx">
       <DependentUpon>Task5_ZeroAwardedPointsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task6_DuplicateAddDeduct\Forms\Task6_DuplicateAddDeductForm.resx">
+      <DependentUpon>Task6_DuplicateAddDeductForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

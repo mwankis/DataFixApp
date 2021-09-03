@@ -44,12 +44,14 @@
             this.connectionStatus = new System.Windows.Forms.Label();
             this.testConnectionBtn = new System.Windows.Forms.Button();
             this.task5Btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // task1Btn
             // 
-            this.task1Btn.Location = new System.Drawing.Point(41, 320);
+            this.task1Btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.task1Btn.Location = new System.Drawing.Point(8, 306);
             this.task1Btn.Name = "task1Btn";
             this.task1Btn.Size = new System.Drawing.Size(104, 50);
             this.task1Btn.TabIndex = 0;
@@ -59,7 +61,8 @@
             // 
             // task2Btn
             // 
-            this.task2Btn.Location = new System.Drawing.Point(175, 320);
+            this.task2Btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.task2Btn.Location = new System.Drawing.Point(128, 306);
             this.task2Btn.Name = "task2Btn";
             this.task2Btn.Size = new System.Drawing.Size(105, 50);
             this.task2Btn.TabIndex = 1;
@@ -69,7 +72,8 @@
             // 
             // task3Btn
             // 
-            this.task3Btn.Location = new System.Drawing.Point(301, 320);
+            this.task3Btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.task3Btn.Location = new System.Drawing.Point(250, 306);
             this.task3Btn.Name = "task3Btn";
             this.task3Btn.Size = new System.Drawing.Size(129, 50);
             this.task3Btn.TabIndex = 2;
@@ -79,7 +83,8 @@
             // 
             // task4Btn
             // 
-            this.task4Btn.Location = new System.Drawing.Point(464, 320);
+            this.task4Btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.task4Btn.Location = new System.Drawing.Point(396, 306);
             this.task4Btn.Name = "task4Btn";
             this.task4Btn.Size = new System.Drawing.Size(125, 50);
             this.task4Btn.TabIndex = 3;
@@ -198,7 +203,8 @@
             // 
             // task5Btn
             // 
-            this.task5Btn.Location = new System.Drawing.Point(616, 320);
+            this.task5Btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.task5Btn.Location = new System.Drawing.Point(534, 306);
             this.task5Btn.Name = "task5Btn";
             this.task5Btn.Size = new System.Drawing.Size(104, 50);
             this.task5Btn.TabIndex = 20;
@@ -206,11 +212,23 @@
             this.task5Btn.UseVisualStyleBackColor = true;
             this.task5Btn.Click += new System.EventHandler(this.task5Btn_Click);
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Location = new System.Drawing.Point(653, 306);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 50);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Task 6(Duplicate AddDeducts)";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.task5Btn);
             this.Controls.Add(this.connectionStatus);
             this.Controls.Add(this.testConnectionBtn);
@@ -221,7 +239,8 @@
             this.Controls.Add(this.task1Btn);
             this.MaximizeBox = false;
             this.Name = "MainApplication";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "Main Application";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -247,6 +266,7 @@
         private System.Windows.Forms.Button testConnectionBtn;
         private System.Windows.Forms.CheckBox loadAppSettings;
         private System.Windows.Forms.Button task5Btn;
+        private System.Windows.Forms.Button button1;
     }
 }
 

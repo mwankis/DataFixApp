@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using MainApplication.Task2_DuplicateInvoices.Forms;
 using MainApplication.Task5_ZeroAwardedPoints.Forms;
 using MainApplication.Task4_MissingOpeningInvoices.Forms;
+using MainApplication.Task6_DuplicateAddDeduct.Forms;
 
 namespace MainApplication
 {
@@ -113,6 +114,13 @@ namespace MainApplication
             form.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = new Task6_DuplicateAddDeductForm(_organizationService);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
         private void loadAppSettingsValues(object sender, EventArgs e)
         {
             var isChecked = loadAppSettings.Checked;
@@ -130,6 +138,8 @@ namespace MainApplication
                 userName.Text = string.Empty; 
                 password.Text = string.Empty;
             }
-        }       
+        }
+
+       
     }
 }

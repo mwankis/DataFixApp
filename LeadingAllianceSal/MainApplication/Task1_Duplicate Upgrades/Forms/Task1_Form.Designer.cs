@@ -253,7 +253,7 @@
             this.errorTab.Name = "errorTab";
             this.errorTab.Size = new System.Drawing.Size(1120, 407);
             this.errorTab.TabIndex = 2;
-            this.errorTab.Text = "Error Messages";
+            this.errorTab.Text = "Progress Status";
             this.errorTab.UseVisualStyleBackColor = true;
             // 
             // panel2
@@ -283,7 +283,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 446);
             this.Controls.Add(this.applicationTabs);
-            this.Text = "Task1_Form";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ShowIcon = false;
+            this.Text = "Task1 - Duplicate Upgrades";
             this.applicationTabs.ResumeLayout(false);
             this.fetchDataTab.ResumeLayout(false);
             this.fetchDataTab.PerformLayout();

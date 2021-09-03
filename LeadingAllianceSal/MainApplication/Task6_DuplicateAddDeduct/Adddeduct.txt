@@ -13,3 +13,6 @@ new_reason = should have value of ‘Upgrade’
 should deactivate the most recent
 
 adddeduct linked to invoice and it should also de-activated.
+
+
+QA1. what is data type for new_additiondeduction
