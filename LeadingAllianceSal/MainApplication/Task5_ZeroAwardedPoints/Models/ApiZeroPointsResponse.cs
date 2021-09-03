@@ -7,9 +7,9 @@ namespace MainApplication.Task5_ZeroAwardedPoints.Models
     {
         public string ErrorMessage { get; set; }
 
-        public ApiInvoice ApiPoint { get; set; }
+        public ApiInvoice ApiInvoice { get; set; }
 
-        public List<ApiInvoice> ApiPoints { get; set; } = new List<ApiInvoice>();
+        public List<ApiInvoice> ApiInvoices { get; set; } = new List<ApiInvoice>();
     }
 
     public class ApiInvoice

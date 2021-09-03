@@ -277,7 +277,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 456);
             this.Controls.Add(this.applicationTabs);
-            this.Name = "Task6_DuplicateAddDeductForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ShowIcon = false;
             this.Text = "Task6 Duplicate AddDeducts";

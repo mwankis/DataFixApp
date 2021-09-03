@@ -3,20 +3,22 @@ using MainApplication.Task5_ZeroAwardedPoints.Models;
 using Microsoft.Xrm.Sdk;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MainApplication.Task5_ZeroAwardedPoints.BusinessLogic
 {
     public static class CallApiLogic
     {
-        public static ApiZeroPointsResponse GetApiPoints(DateTime fromDate, DateTime toDate, Entity invoice)
+        public static ApiZeroPointsResponse GetApiPoints(DateTime fromDate, DateTime toDate)
         {
             var apiZeroPointsResponse = new ApiZeroPointsResponse();
             try
             {
-                var apiResponse = CallApiUtil.GetApiRecords<List<ApiPoints>>(fromDate, "GetNewInvoices");
+                var apiResponse = CallApiUtil.GetApiRecords<List<ApiInvoice>>(fromDate, "GetNewInvoices");
                 if (string.IsNullOrEmpty(apiResponse.ErrorMessage))
                 {
-                    apiZeroPointsResponse.ApiPoints = apiResponse.ResponseBody as List<ApiPoints>;
+                    var apiInvoices = apiResponse.ResponseBody as List<ApiInvoice>;
+                    apiZeroPointsResponse.ApiInvoices = apiInvoices.Where(x => x.Date <= toDate).ToList();
                 }
                 apiZeroPointsResponse.ErrorMessage = apiResponse.ErrorMessage;
                 return apiZeroPointsResponse;

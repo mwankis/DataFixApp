@@ -256,7 +256,6 @@ namespace MainApplication.Task1.Forms
                 errorList.Items.Add("Error occurred while executing AddRecordsToDataGridView() method. " + ex.Message);
                 errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
             }
-
         }
 
         private Entity GetOldestRecord(List<Entity> entityList)

@@ -59,7 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeSamples.cs" />
     <Compile Include="ConnectToCRM.cs" />
     <Compile Include="DynamicsConnectionResult.cs" />
     <Compile Include="DynamicsService.cs" />

@@ -6,3 +6,6 @@ the invoice from Dolphin and update in CRM if needed less
 => get invoices from GetNewInvoices
 
 => map api Invoice to crm Invoice using invoiceNo, date and clientId
+
+Qu1. When getting invoices is there any need to filter with date range??
+Qu2. On invoices query expresion which date field should be used 

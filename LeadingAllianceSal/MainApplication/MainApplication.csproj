@@ -63,6 +63,7 @@
     <Compile Include="Constants\ApplicationConstants.cs" />
     <Compile Include="Helpers\ApplicationSettingsHelper.cs" />
     <Compile Include="Helpers\CallApiUtil.cs" />
+    <Compile Include="Helpers\GeneralHelper.cs" />
     <Compile Include="MainApplication.cs">
       <SubType>Form</SubType>
     </Compile>
