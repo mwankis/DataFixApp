@@ -13,7 +13,7 @@ namespace MainApplication.Task5_ZeroAwardedPoints.BusinessLogic
             var apiZeroPointsResponse = new ApiZeroPointsResponse();
             try
             {
-                var apiResponse = CallApiUtil.GetApiRecords<List<ApiPoints>>(fromDate, "GetPoints");
+                var apiResponse = CallApiUtil.GetApiRecords<List<ApiPoints>>(fromDate, "GetNewInvoices");
                 if (string.IsNullOrEmpty(apiResponse.ErrorMessage))
                 {
                     apiZeroPointsResponse.ApiPoints = apiResponse.ResponseBody as List<ApiPoints>;
