@@ -32,7 +32,6 @@
             this.fetchDataTab = new System.Windows.Forms.TabPage();
             this.dateTo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.loadTestData = new System.Windows.Forms.Button();
             this.dateFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.dataRecordsGridView = new System.Windows.Forms.DataGridView();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,7 @@
             this.errorTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
+            this.DeDupCnt = new System.Windows.Forms.Label();
             this.applicationTabs.SuspendLayout();
             this.fetchDataTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecordsGridView)).BeginInit();
@@ -72,9 +72,9 @@
             // 
             // fetchDataTab
             // 
+            this.fetchDataTab.Controls.Add(this.DeDupCnt);
             this.fetchDataTab.Controls.Add(this.dateTo);
             this.fetchDataTab.Controls.Add(this.label1);
-            this.fetchDataTab.Controls.Add(this.loadTestData);
             this.fetchDataTab.Controls.Add(this.dateFilterCheckBox);
             this.fetchDataTab.Controls.Add(this.dataRecordsGridView);
             this.fetchDataTab.Controls.Add(this.recordCount);
@@ -109,16 +109,6 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "To";
             this.label1.Visible = false;
-            // 
-            // loadTestData
-            // 
-            this.loadTestData.Location = new System.Drawing.Point(206, 11);
-            this.loadTestData.Margin = new System.Windows.Forms.Padding(2);
-            this.loadTestData.Name = "loadTestData";
-            this.loadTestData.Size = new System.Drawing.Size(102, 26);
-            this.loadTestData.TabIndex = 12;
-            this.loadTestData.Text = "Load Test Data";
-            this.loadTestData.UseVisualStyleBackColor = true;
             // 
             // dateFilterCheckBox
             // 
@@ -279,6 +269,15 @@
             this.errorList.Size = new System.Drawing.Size(1112, 324);
             this.errorList.TabIndex = 0;
             // 
+            // DeDupCnt
+            // 
+            this.DeDupCnt.AutoSize = true;
+            this.DeDupCnt.Location = new System.Drawing.Point(103, 16);
+            this.DeDupCnt.Name = "DeDupCnt";
+            this.DeDupCnt.Size = new System.Drawing.Size(86, 16);
+            this.DeDupCnt.TabIndex = 15;
+            this.DeDupCnt.Text = "DeDupCnt   0";
+            // 
             // Task1_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,7 +303,6 @@
         private System.Windows.Forms.TabPage fetchDataTab;
         private System.Windows.Forms.DateTimePicker dateTo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button loadTestData;
         private System.Windows.Forms.CheckBox dateFilterCheckBox;
         private System.Windows.Forms.DataGridView dataRecordsGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
@@ -322,5 +320,6 @@
         private System.Windows.Forms.TabPage errorTab;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox errorList;
+        private System.Windows.Forms.Label DeDupCnt;
     }
 }

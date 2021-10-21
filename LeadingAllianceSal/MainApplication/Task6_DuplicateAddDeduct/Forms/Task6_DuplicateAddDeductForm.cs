@@ -214,6 +214,16 @@ namespace MainApplication.Task6_DuplicateAddDeduct.Forms
                     }
 
                 }
+
+                int cnt = 0;
+                foreach (var entityList in _dataRecords)
+                {
+                    if (entityList.EntityList.Count > 1)
+                    {
+                        cnt++;
+                    }
+                }
+                DeDupCnt.Text = "DeDupCnt " + cnt;
             }
             catch (Exception ex)
             {

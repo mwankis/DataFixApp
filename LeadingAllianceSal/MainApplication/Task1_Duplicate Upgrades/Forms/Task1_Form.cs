@@ -198,6 +198,16 @@ namespace MainApplication.Task1.Forms
                     }
 
                 }
+
+                int cnt = 0;
+                foreach (var entityList in _dataRecords)
+                {
+                    if (entityList.EntityList.Count > 1)
+                    {
+                        cnt++;
+                    }
+                }
+                DeDupCnt.Text = "DeDupCnt " + cnt;
             }
             catch (Exception ex)
             {
@@ -248,7 +258,6 @@ namespace MainApplication.Task1.Forms
                         {
                             row.Cells[5].Value = "grey";
                         }
-
 
                         dataRecordsGridView.Rows.Add(row);
                     }

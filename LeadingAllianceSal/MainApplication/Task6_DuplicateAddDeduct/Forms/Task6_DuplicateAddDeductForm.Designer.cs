@@ -50,6 +50,7 @@
             this.errorTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
+            this.DeDupCnt = new System.Windows.Forms.Label();
             this.applicationTabs.SuspendLayout();
             this.fetchDataTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecordsGridView)).BeginInit();
@@ -72,6 +73,7 @@
             // 
             // fetchDataTab
             // 
+            this.fetchDataTab.Controls.Add(this.DeDupCnt);
             this.fetchDataTab.Controls.Add(this.dateTo);
             this.fetchDataTab.Controls.Add(this.label1);
             this.fetchDataTab.Controls.Add(this.dateFilterCheckBox);
@@ -276,6 +278,15 @@
             this.errorList.Size = new System.Drawing.Size(1086, 324);
             this.errorList.TabIndex = 0;
             // 
+            // DeDupCnt
+            // 
+            this.DeDupCnt.AutoSize = true;
+            this.DeDupCnt.Location = new System.Drawing.Point(100, 17);
+            this.DeDupCnt.Name = "DeDupCnt";
+            this.DeDupCnt.Size = new System.Drawing.Size(83, 16);
+            this.DeDupCnt.TabIndex = 15;
+            this.DeDupCnt.Text = "DeDupCnt  0";
+            // 
             // Task6_DuplicateAddDeductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,5 +330,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NewDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedOn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Colour;
+        private System.Windows.Forms.Label DeDupCnt;
     }
 }
