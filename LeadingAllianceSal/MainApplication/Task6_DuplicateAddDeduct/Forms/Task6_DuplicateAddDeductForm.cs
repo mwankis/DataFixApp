@@ -27,6 +27,7 @@ namespace MainApplication.Task6_DuplicateAddDeduct.Forms
             dataRecordsGridView.Refresh();
             _dataRecords = new List<AddDeductModel>();
             var dateFrom = dateTimeFrom.Value;
+            var dateFromTo = dateTo.Value;
             var query = new QueryExpression("new_adddeduct")
             {
                 ColumnSet = new ColumnSet(true)
@@ -37,7 +38,7 @@ namespace MainApplication.Task6_DuplicateAddDeduct.Forms
             if (isChecked)
             {
                 query.Criteria.AddCondition("createdon", ConditionOperator.OnOrAfter, dateFrom);
-                query.Criteria.AddCondition("createdon", ConditionOperator.OnOrBefore, dateFrom);
+                query.Criteria.AddCondition("createdon", ConditionOperator.OnOrBefore, dateFromTo);
             }
             query.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
             query.Criteria.AddCondition("new_name", ConditionOperator.Equal, "Upgrade");
@@ -107,18 +108,21 @@ namespace MainApplication.Task6_DuplicateAddDeduct.Forms
                             }
 
                             var addDedductInvoice = GetAdddeductInvoice(entity.Id);
-                            var deactivateAdddeductInvoiceResult = DynamicsService.DeactivateEntity(_organizationService, addDedductInvoice, 1, 2);
-                            if (!operationResult.Succeded)
+                            if (addDedductInvoice != null)
                             {
-                                errorList.Items.Add($"{status}. Failed to deactivate AdddeductInvoice with id: {addDedductInvoice.Id}");
-                                errorList.Items.Add(operationResult.ErrorMessage);
-                                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
-                            }
-                            else
-                            {
-                                errorList.Items.Add($"{status}. AdddeductInvoice successfully deactivated. Id: {addDedductInvoice.Id}");
-                                errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
-                            }
+                                var deactivateAdddeductInvoiceResult = DynamicsService.DeactivateEntity(_organizationService, addDedductInvoice, 3, 100003);
+                                if (!operationResult.Succeded)
+                                {
+                                    errorList.Items.Add($"{status}. Failed to deactivate AdddeductInvoice with id: {addDedductInvoice.Id}");
+                                    errorList.Items.Add(operationResult.ErrorMessage);
+                                    errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                                }
+                                else
+                                {
+                                    errorList.Items.Add($"{status}. AdddeductInvoice successfully deactivated. Id: {addDedductInvoice.Id}");
+                                    errorList.Items.Add("_____________________________________________________________________________________________________________________________________________________________");
+                                }
+                            }                            
 
                         }
                     }
@@ -136,6 +140,7 @@ namespace MainApplication.Task6_DuplicateAddDeduct.Forms
         {
             var query = new QueryExpression("invoice");
             query.Criteria.AddCondition("new_adddeductid", ConditionOperator.Equal, adddeductId);
+            query.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
             var entityCollection = _organizationService.RetrieveMultiple(query);
             if (entityCollection.Entities.Count > 0)
             {
@@ -301,6 +306,25 @@ namespace MainApplication.Task6_DuplicateAddDeduct.Forms
                 return null;
             }
 
+        }
+
+        private void dateFilterChange(object sender, EventArgs e)
+        {
+            var isChecked = dateFilterCheckBox.Checked;
+            if (isChecked)
+            {
+                fromDate.Visible = true;
+                dateTimeFrom.Visible = true;
+                label1.Visible = true;
+                dateTo.Visible = true;
+            }
+            else
+            {
+                fromDate.Visible = false;
+                dateTimeFrom.Visible = false;
+                label1.Visible = false;
+                dateTo.Visible = false;
+            }
         }
     }
 }

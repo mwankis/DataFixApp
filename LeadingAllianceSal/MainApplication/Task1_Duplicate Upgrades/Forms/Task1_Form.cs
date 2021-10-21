@@ -28,11 +28,15 @@ namespace MainApplication.Task1.Forms
             {
                 fromDate.Visible = true;
                 dateTimeFrom.Visible = true;
+                dateTo.Visible = true;
+                dateTo.Visible = true;
             }
             else
             {
                 fromDate.Visible = false;
                 dateTimeFrom.Visible = false;
+                dateTo.Visible = false;
+                dateTo.Visible = false;
             }
         }
 
@@ -42,6 +46,7 @@ namespace MainApplication.Task1.Forms
             dataRecordsGridView.Refresh();
             _dataRecords = new List<UpgradeModel>();
             var dateFrom = dateTimeFrom.Value;
+            var dateTimeTo =  dateTo.Value;
             var query = new QueryExpression("new_upgrade")
             {
                 ColumnSet = new ColumnSet(true)
@@ -52,7 +57,7 @@ namespace MainApplication.Task1.Forms
             if (isChecked)
             {
                 query.Criteria.AddCondition("createdon", ConditionOperator.OnOrAfter, dateFrom);
-                query.Criteria.AddCondition("createdon", ConditionOperator.OnOrBefore, dateFrom);
+                query.Criteria.AddCondition("createdon", ConditionOperator.OnOrBefore, dateTimeTo);
             }
             query.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
             var operationResult = DynamicsService.RetrieveAllRecords(_organizationService, query);

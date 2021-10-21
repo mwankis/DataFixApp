@@ -98,6 +98,7 @@
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(145, 22);
             this.dateTo.TabIndex = 14;
+            this.dateTo.Visible = false;
             // 
             // label1
             // 
@@ -107,6 +108,7 @@
             this.label1.Size = new System.Drawing.Size(25, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "To";
+            this.label1.Visible = false;
             // 
             // loadTestData
             // 

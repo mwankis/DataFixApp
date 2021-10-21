@@ -34,6 +34,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.dataRecordsGridView = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NewDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recordCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.Label();
@@ -43,13 +50,6 @@
             this.errorTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorList = new System.Windows.Forms.ListBox();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NewDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applicationTabs.SuspendLayout();
             this.fetchDataTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecordsGridView)).BeginInit();
@@ -95,8 +95,9 @@
             // 
             this.dateTo.Location = new System.Drawing.Point(621, 11);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Size = new System.Drawing.Size(145, 22);
+            this.dateTo.Size = new System.Drawing.Size(222, 22);
             this.dateTo.TabIndex = 14;
+            this.dateTo.Visible = false;
             // 
             // label1
             // 
@@ -106,6 +107,7 @@
             this.label1.Size = new System.Drawing.Size(25, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "To";
+            this.label1.Visible = false;
             // 
             // dateFilterCheckBox
             // 
@@ -117,6 +119,7 @@
             this.dateFilterCheckBox.TabIndex = 11;
             this.dateFilterCheckBox.Text = "Filter with Date";
             this.dateFilterCheckBox.UseVisualStyleBackColor = true;
+            this.dateFilterCheckBox.CheckedChanged += new System.EventHandler(this.dateFilterChange);
             // 
             // dataRecordsGridView
             // 
@@ -139,96 +142,6 @@
             this.dataRecordsGridView.RowTemplate.Height = 24;
             this.dataRecordsGridView.Size = new System.Drawing.Size(1082, 360);
             this.dataRecordsGridView.TabIndex = 10;
-            // 
-            // recordCount
-            // 
-            this.recordCount.AutoSize = true;
-            this.recordCount.Location = new System.Drawing.Point(59, 16);
-            this.recordCount.Name = "recordCount";
-            this.recordCount.Size = new System.Drawing.Size(15, 16);
-            this.recordCount.TabIndex = 9;
-            this.recordCount.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Count";
-            // 
-            // fromDate
-            // 
-            this.fromDate.AutoSize = true;
-            this.fromDate.Location = new System.Drawing.Point(321, 14);
-            this.fromDate.Name = "fromDate";
-            this.fromDate.Size = new System.Drawing.Size(39, 16);
-            this.fromDate.TabIndex = 5;
-            this.fromDate.Text = "From";
-            this.fromDate.Visible = false;
-            // 
-            // dateTimeFrom
-            // 
-            this.dateTimeFrom.Location = new System.Drawing.Point(375, 10);
-            this.dateTimeFrom.Name = "dateTimeFrom";
-            this.dateTimeFrom.Size = new System.Drawing.Size(209, 22);
-            this.dateTimeFrom.TabIndex = 4;
-            this.dateTimeFrom.Visible = false;
-            // 
-            // applyChanges
-            // 
-            this.applyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.applyChanges.Location = new System.Drawing.Point(964, 4);
-            this.applyChanges.Name = "applyChanges";
-            this.applyChanges.Size = new System.Drawing.Size(111, 32);
-            this.applyChanges.TabIndex = 2;
-            this.applyChanges.Text = "Apply Changes";
-            this.applyChanges.UseVisualStyleBackColor = true;
-            this.applyChanges.Click += new System.EventHandler(this.applyChanges_Click);
-            // 
-            // fetchBtn
-            // 
-            this.fetchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchBtn.Location = new System.Drawing.Point(814, 7);
-            this.fetchBtn.Name = "fetchBtn";
-            this.fetchBtn.Size = new System.Drawing.Size(107, 30);
-            this.fetchBtn.TabIndex = 0;
-            this.fetchBtn.Text = "Fetch Records";
-            this.fetchBtn.UseVisualStyleBackColor = true;
-            this.fetchBtn.Click += new System.EventHandler(this.fetchBtn_Click);
-            // 
-            // errorTab
-            // 
-            this.errorTab.Controls.Add(this.panel2);
-            this.errorTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorTab.Location = new System.Drawing.Point(4, 22);
-            this.errorTab.Name = "errorTab";
-            this.errorTab.Size = new System.Drawing.Size(1094, 407);
-            this.errorTab.TabIndex = 2;
-            this.errorTab.Text = "Progress Status";
-            this.errorTab.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.errorList);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1094, 407);
-            this.panel2.TabIndex = 1;
-            // 
-            // errorList
-            // 
-            this.errorList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.errorList.FormattingEnabled = true;
-            this.errorList.ItemHeight = 20;
-            this.errorList.Location = new System.Drawing.Point(5, 13);
-            this.errorList.Name = "errorList";
-            this.errorList.Size = new System.Drawing.Size(1086, 324);
-            this.errorList.TabIndex = 0;
             // 
             // Name
             // 
@@ -270,6 +183,98 @@
             this.Colour.Name = "Colour";
             this.Colour.ReadOnly = true;
             this.Colour.Visible = false;
+            // 
+            // recordCount
+            // 
+            this.recordCount.AutoSize = true;
+            this.recordCount.Location = new System.Drawing.Point(59, 16);
+            this.recordCount.Name = "recordCount";
+            this.recordCount.Size = new System.Drawing.Size(15, 16);
+            this.recordCount.TabIndex = 9;
+            this.recordCount.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 16);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Count";
+            // 
+            // fromDate
+            // 
+            this.fromDate.AutoSize = true;
+            this.fromDate.Location = new System.Drawing.Point(315, 14);
+            this.fromDate.Name = "fromDate";
+            this.fromDate.Size = new System.Drawing.Size(39, 16);
+            this.fromDate.TabIndex = 5;
+            this.fromDate.Text = "From";
+            this.fromDate.Visible = false;
+            // 
+            // dateTimeFrom
+            // 
+            this.dateTimeFrom.Location = new System.Drawing.Point(357, 10);
+            this.dateTimeFrom.Name = "dateTimeFrom";
+            this.dateTimeFrom.Size = new System.Drawing.Size(227, 22);
+            this.dateTimeFrom.TabIndex = 4;
+            this.dateTimeFrom.Visible = false;
+            // 
+            // applyChanges
+            // 
+            this.applyChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.applyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.applyChanges.Location = new System.Drawing.Point(964, 4);
+            this.applyChanges.Name = "applyChanges";
+            this.applyChanges.Size = new System.Drawing.Size(111, 32);
+            this.applyChanges.TabIndex = 2;
+            this.applyChanges.Text = "Apply Changes";
+            this.applyChanges.UseVisualStyleBackColor = true;
+            this.applyChanges.Click += new System.EventHandler(this.applyChanges_Click);
+            // 
+            // fetchBtn
+            // 
+            this.fetchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.fetchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fetchBtn.Location = new System.Drawing.Point(849, 7);
+            this.fetchBtn.Name = "fetchBtn";
+            this.fetchBtn.Size = new System.Drawing.Size(107, 30);
+            this.fetchBtn.TabIndex = 0;
+            this.fetchBtn.Text = "Fetch Records";
+            this.fetchBtn.UseVisualStyleBackColor = true;
+            this.fetchBtn.Click += new System.EventHandler(this.fetchBtn_Click);
+            // 
+            // errorTab
+            // 
+            this.errorTab.Controls.Add(this.panel2);
+            this.errorTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorTab.Location = new System.Drawing.Point(4, 22);
+            this.errorTab.Name = "errorTab";
+            this.errorTab.Size = new System.Drawing.Size(1094, 407);
+            this.errorTab.TabIndex = 2;
+            this.errorTab.Text = "Progress Status";
+            this.errorTab.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.errorList);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1094, 407);
+            this.panel2.TabIndex = 1;
+            // 
+            // errorList
+            // 
+            this.errorList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.errorList.FormattingEnabled = true;
+            this.errorList.ItemHeight = 20;
+            this.errorList.Location = new System.Drawing.Point(5, 13);
+            this.errorList.Name = "errorList";
+            this.errorList.Size = new System.Drawing.Size(1086, 324);
+            this.errorList.TabIndex = 0;
             // 
             // Task6_DuplicateAddDeductForm
             // 
